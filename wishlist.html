@@ -1,0 +1,458 @@
+<!-- File: wishlist.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist - BlueStone Clone</title>
+    <!-- Links to CSS and Fonts (same as other pages) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ================================== -->
+    <!--  PASTE YOUR FULL <header> HERE   -->
+    <!-- ================================== -->
+    <header>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <span>1800-419-0066</span> |
+                <span>Video Call Cart</span> |
+                <span>Login</span> |
+                <span>Signup</span>
+            </div>
+        </div>
+    
+        <!-- Main Header -->
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="/"><img src="images/bluestone-logo.webp" alt="BlueStone Logo"></a>
+                </div>
+    
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for Jewellery">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+    
+                <!-- This is the hamburger icon that will appear on mobile -->
+                <button class="mobile-menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+    
+                <!-- These are the desktop-only user actions -->
+                <div class="user-actions">
+                    <a href="#" class="action-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Recently Viewed</span>
+                    </a>
+                    <a href="#" class="action-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Locate Our Store</span>
+                    </a>
+                    <a href="wishlist.html" class="action-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <span>Wishlist</span>
+                        <span id="wishlist-counter" class="cart-counter">0</span>
+                    </a>
+                    <a href="cart.html" class="action-item">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Cart</span>
+                        <span id="cart-counter" class="cart-counter">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Main Navigation (now includes the mobile header) -->
+        <nav class="main-nav">
+            <div class="mobile-nav-header">
+                <span>MENU</span>
+                <button class="mobile-menu-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        
+
+            <div class="container nav-container">
+                <ul>
+                    <!-- ======================= 10+1 Monthly Plan (Simple Link) ======================= -->
+                    <li><a href="#">10+1 Monthly Plan</a></li>
+            
+                    <!-- ======================= Watch Jewellery (Simple Dropdown) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=watch-jewellery">Watch Jewellery <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown-simple">
+                            <a href="product-listing.html?type=watch-charm">Charm</a>
+                            <a href="product-listing.html?type=watch-band">Band</a>
+                            <a href="product-listing.html?type=watch-pin">Pin</a>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Rings (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=rings">Rings <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                <div class="mega-menu-column">
+                                    <h4>Popular Ring Types</h4>
+                                    <a href="product-listing.html?type=engagement-rings">Engagement</a>
+                                    <a href="product-listing.html?type=couple-bands">Couple Bands</a>
+                                    <a href="product-listing.html?type=office-wear-rings">Office Wear</a>
+                                    <a href="product-listing.html?type=stackable-rings">Stackable</a>
+                                    <a href="product-listing.html?type=religious-rings">Religious</a>
+                                    <a href="product-listing.html?type=platinum-bands">Platinum Bands</a>
+                                    <a href="product-listing.html?type=mens-rings">For Men</a>
+                                    <a href="product-listing.html?type=gift-rings">For Gift</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Price Range</h4>
+                                    <a href="product-listing.html?price=0-10000">Below 10,000</a>
+                                    <a href="product-listing.html?price=10000-20000">10,000 - 20,000</a>
+                                    <a href="product-listing.html?price=20000-30000">20,000 - 30,000</a>
+                                    <a href="product-listing.html?price=30000-40000">30,000 - 40,000</a>
+                                    <a href="product-listing.html?price=40000-50000">40,000 - 50,000</a>
+                                    <a href="product-listing.html?price=50000-999999">50,000 and above</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Metals & Stones</h4>
+                                    <a href="product-listing.html?category=rings&metal=diamond">Diamond Rings</a>
+                                    <a href="product-listing.html?category=rings&metal=gold">Gold Rings</a>
+                                    <a href="product-listing.html?category=rings&metal=white-gold">White Gold Rings</a>
+                                    <a href="product-listing.html?category=rings&metal=rose-gold">Rose Gold Rings</a>
+                                    <a href="product-listing.html?category=rings&metal=platinum">Platinum Rings</a>
+                                    <a href="product-listing.html?category=solitaire-rings">Solitaire Rings</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg5.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/menu-ring.jpg" alt="Featured Ring">
+                                    <span>Livina Stacks of Love</span>
+                                    <a href="product-listing.html?category=rings" class="btn btn-secondary" style="margin-top:15px;">View All Rings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- ======================= Earrings (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=earrings">Earrings <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                 <div class="mega-menu-column">
+                                    <h4>Popular Earring Types</h4>
+                                    <a href="product-listing.html?type=studs">Studs</a>
+                                    <a href="product-listing.html?type=drops">Drops</a>
+                                    <a href="product-listing.html?type=sui-dhaga">Sui Dhaga</a>
+                                    <a href="product-listing.html?type=jhumkas">Jhumkas</a>
+                                    <a href="product-listing.html?type=chandbali">Chandbali</a>
+                                    <a href="product-listing.html?type=front-back">Front Back</a>
+                                    <a href="product-listing.html?type=ear-cuffs">Ear Cuffs</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Price Range</h4>
+                                    <a href="product-listing.html?category=earrings&price=0-10000">Below 10,000</a>
+                                    <a href="product-listing.html?category=earrings&price=10000-20000">10,000 - 20,000</a>
+                                    <a href="product-listing.html?category=earrings&price=20000-30000">20,000 - 30,000</a>
+                                    <a href="product-listing.html?category=earrings&price=30000-40000">30,000 - 40,000</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Metals & Stones</h4>
+                                    <a href="product-listing.html?category=earrings&metal=diamond">Diamond Earrings</a>
+                                    <a href="product-listing.html?category=earrings&metal=gold">Gold Earrings</a>
+                                    <a href="product-listing.html?category=earrings&metal=white-gold">White Gold Earrings</a>
+                                    <a href="product-listing.html?category=earrings&metal=gemstone">Gemstone Earrings</a>
+                                    <a href="product-listing.html?category=solitaire-earrings">Solitaire Earrings</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg7.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/earring.jpg" alt="Featured Earring">
+                                    <span>For The Men</span>
+                                     <a href="product-listing.html?category=earrings" class="btn btn-secondary" style="margin-top:15px;">View All Earrings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Pendants (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=pendants">Pendants <i class="fa-solid fa-angle-down"></i></a>
+                         <div class="mega-menu">
+                            <div class="container">
+                                 <div class="mega-menu-column">
+                                    <h4>Popular Pendant Types</h4>
+                                    <a href="product-listing.html?type=alphabet-pendants">Alphabet</a>
+                                    <a href="product-listing.html?type=religious-pendants">Religious</a>
+                                    <a href="product-listing.html?type=fashion-pendants">Fashion</a>
+                                    <a href="product-listing.html?type=heart-pendants">Heart Shaped</a>
+                                    <a href="product-listing.html?type=lockets">Lockets</a>
+                                    <a href="product-listing.html?type=office-wear-pendants">Office Wear</a>
+                                    <a href="product-listing.html?type=kids-pendants">For Kids</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Price Range</h4>
+                                    <a href="product-listing.html?category=pendants&price=0-10000">Below 10,000</a>
+                                    <a href="product-listing.html?category=pendants&price=10000-20000">10,000 - 20,000</a>
+                                    <a href="product-listing.html?category=pendants&price=20000-30000">20,000 - 30,000</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Metals & Stones</h4>
+                                    <a href="product-listing.html?category=pendants&metal=diamond">Diamond Pendants</a>
+                                    <a href="product-listing.html?category=pendants&metal=gold">Gold Pendants</a>
+                                    <a href="product-listing.html?category=pendants&metal=gemstone">Gemstone Pendants</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                     <img src="https://kinclimg5.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/pendant.jpg" alt="Featured Pendant">
+                                    <span>Diva-fine Diamonds</span>
+                                    <a href="product-listing.html?category=pendants" class="btn btn-secondary" style="margin-top:15px;">View All Pendants</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Solitaires (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=solitaires">Solitaires <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg3.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/solitaire-ring.v1.png" alt="Solitaire Ring">
+                                    <a href="product-listing.html?category=solitaire-rings">Solitaire Rings</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                     <img src="https://kinclimg1.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/solitaire-pendant.v1.png" alt="Solitaire Pendant">
+                                    <a href="product-listing.html?category=solitaire-pendants">Solitaire Pendants</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg9.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/solitaire-earring.v1.png" alt="Solitaire Earrings">
+                                    <a href="product-listing.html?category=solitaire-earrings">Solitaire Earrings</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Diamond Education</h4>
+                                    <a href="#">Cut</a>
+                                    <a href="#">Colour</a>
+                                    <a href="#">Clarity</a>
+                                    <a href="#">Certification</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- ======================= All Jewellery (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=all">All Jewellery <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                <div class="mega-menu-column">
+                                    <h4>Shop By Category</h4>
+                                    <a href="product-listing.html?category=bangles">Bangles</a>
+                                    <a href="product-listing.html?category=bracelets">Bracelets</a>
+                                    <a href="product-listing.html?category=earrings">Earrings</a>
+                                    <a href="product-listing.html?category=gold-chains">Gold Chains</a>
+                                    <a href="product-listing.html?category=nose-pins">Nose Pins</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Men's Jewellery</h4>
+                                    <a href="product-listing.html?category=mens-rings">Rings</a>
+                                    <a href="product-listing.html?category=mens-bracelets">Bracelets</a>
+                                    <a href="product-listing.html?category=mens-chains">Chains</a>
+                                    <a href="product-listing.html?category=mens-studs">Studs</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Gold Jewellery</h4>
+                                     <a href="product-listing.html?metal=gold&category=bangles">Bangles</a>
+                                     <a href="product-listing.html?metal=gold&category=bracelets">Bracelets</a>
+                                     <a href="product-listing.html?metal=gold&category=earrings">Earrings</a>
+                                     <a href="product-listing.html?metal=gold&category=rings">Rings</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Diamond Jewellery</h4>
+                                     <a href="product-listing.html?metal=diamond&category=bangles">Bangles</a>
+                                     <a href="product-listing.html?metal=diamond&category=bracelets">Bracelets</a>
+                                     <a href="product-listing.html?metal=diamond&category=earrings">Earrings</a>
+                                     <a href="product-listing.html?metal=diamond&category=rings">Rings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- ======================= Gifts (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=gifts">Gifts <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                <div class="mega-menu-column">
+                                    <h4>Gifts By Occasion</h4>
+                                    <a href="product-listing.html?occasion=anniversary">Anniversary</a>
+                                    <a href="product-listing.html?occasion=birthday">Birthday</a>
+                                    <a href="product-listing.html?occasion=engagement">Engagement</a>
+                                    <a href="product-listing.html?occasion=wedding">Wedding</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Price Range</h4>
+                                    <a href="product-listing.html?category=gifts&price=0-10000">Below 10,000</a>
+                                    <a href="product-listing.html?category=gifts&price=10000-20000">10,000 - 20,000</a>
+                                    <a href="product-listing.html?category=gifts&price=20000-30000">20,000 - 30,000</a>
+                                    <a href="product-listing.html?category=gifts&price=30000-40000">30,000 - 40,000</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Gifts For Special Someone</h4>
+                                    <a href="product-listing.html?recipient=her">For HER</a>
+                                    <a href="product-listing.html?recipient=him">For HIM</a>
+                                    <a href="product-listing.html?recipient=sister">For SISTER</a>
+                                    <a href="product-listing.html?recipient=mother">For MOTHER</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg3.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/giftcard.jpg" alt="Gift Card">
+                                    <span>BlueStone Gift Cards</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Gold Coins (Simple Dropdown) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=gold-coins">Gold Coins <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown-simple">
+                            <a href="product-detail.html?id=GC001">0.5 gram</a>
+                            <a href="product-detail.html?id=GC002">1 gram</a>
+                            <a href="product-detail.html?id=GC003">2 gram</a>
+                            <a href="product-detail.html?id=GC004">5 gram</a>
+                            <a href="product-detail.html?id=GC005">10 gram</a>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Offers (Simple Dropdown) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="offers-link">Offers <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown-simple">
+                            <a href="product-listing.html?offers=diamond">Upto 20% Off On Diamond Prices</a>
+                            <a href="product-listing.html?offers=making-charges">20% Off On Making Charges</a>
+                            <a href="product-listing.html?offers=flat-10">Flat 10% Off</a>
+                            <a href="product-listing.html?offers=all">All Offers</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+  <!-- File: wishlist.html -->
+<main class="wishlist-main">
+    <div class="container">
+        <h1>My Wishlist</h1>
+
+        <!-- ID MUST BE "wishlist-grid" -->
+        <div id="wishlist-grid" class="product-grid">
+            <!-- This should be empty -->
+        </div>
+
+        <!-- ID MUST BE "empty-wishlist-message" -->
+        <div id="empty-wishlist-message" class="empty-wishlist-container" style="display: none;">
+            <h2 class="empty-wishlist-icon">Your Wishlist is Empty</h2>
+            <p>You haven't added any items yet. Click the heart icon on products to save them for later!</p>
+            <a href="product-listing.html" class="btn btn-primary">Discover Products</a>
+        </div>
+    </div>
+</main>
+
+    <!-- ================================== -->
+    <!--  PASTE YOUR FULL <footer> HERE   -->
+    <!-- ================================== -->
+    <footer class="site-footer-v2">
+        <div class="footer-top">
+            <div class="container footer-top-container">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>ABOUT US</h4>
+                        <ul>
+                            <li><a href="#">Who we are?</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Design Philosophy</a></li>
+                        </ul>
+                        <h4>CUSTOMER DELIGHT</h4>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>POLICIES</h4>
+                        <ul>
+                            <li><a href="#">30-Day Returns</a></li>
+                            <li><a href="#">Lifetime Exchange & Buy Back</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Fraud Warning Disclaimer</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>SHOP WITH CONFIDENCE</h4>
+                        <ul>
+                            <li><a href="#">Why Buy From Us?</a></li>
+                            <li><a href="#">Our Certifications</a></li>
+                            <li><a href="#">Press Room</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>JEWELLERY GUIDE</h4>
+                        <ul>
+                            <li><a href="#">Buying and Price Guide</a></li>
+                            <li><a href="#">Certification Guide</a></li>
+                            <li><a href="#">Diamond and Solitaire Guide</a></li>
+                            <li><a href="#">Gemstone Guide</a></li>
+                            <li><a href="#">Gifting Guide</a></li>
+                            <li><a href="#">Jewellery Care Guide</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-app-download">
+                    <div class="footer-content">
+                        <h4>Download BlueStone App</h4>
+                        <p>Shining new app, made just for you! It's Free, Easy & Smart.</p>
+                        <div class="app-stores">
+                            <a
+                                href="https://play.google.com/store/apps/details?id=com.bluestone.android&referrer=website&utm_source%3Dwebsite_footer%26utm_medium%3Dwebsite%26utm_campaign%3Dwebsite"><img
+                                    src="images/playstore.png" alt="Get it on Google Play"></a>
+                            <a href="https://apps.apple.com/in/app/bluestone-jewellery-online/id1107631430"><img
+                                    src="images/appstore.png" alt="Download on the App Store"></a>
+                        </div>
+                    </div>
+                    <img class="app-promo-img"
+                        src="https://kinclimg5.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/static/home/app-footer.v2.png"
+                        alt="BlueStone App on a phone">
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom with Font Awesome Icons -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <div class="newsletter-signup">
+                    <form>
+                        <input type="email" placeholder="Enter email for our newsletter">
+                        <button type="submit">SUBSCRIBE</button>
+                    </form>
+                </div>
+                <div class="footer-social">
+                    <span>Follow us on</span>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/cart.js"></script> <!-- Contains the wishlist functions -->
+    <script src="js/wishlist-page.js"></script> <!-- Our new JS file -->
+    <script src="js/main.js"></script> <!-- For header interactivity -->
+</body>
+</html>

@@ -1,0 +1,19 @@
+{
+    "metals": {
+      "Gold": 1.0,
+      "White Gold": 1.1,
+      "Rose Gold": 1.05,
+      "Platinum": 1.8
+    },
+    "purity": {
+      "14K": 0.8,
+      "18K": 1.0,
+      "22K": 1.25
+    },
+    "stones": {
+      "Diamond (SI IJ)": 1.0,
+      "Diamond (VS GH)": 1.5,
+      "Ruby": 0.9,
+      "Emerald": 1.1
+    }
+  }

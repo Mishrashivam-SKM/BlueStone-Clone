@@ -1,0 +1,570 @@
+[
+  {
+    "id": "BS001R",
+    "name": "Classic Solitaire Ring",
+    "category": "Rings",
+    "price": 28550,
+    "description": "A testament to classic beauty, this ring features a brilliant solitaire diamond set in a lustrous gold band, perfect for engagements or as a statement piece.",
+    "images": [
+      "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg",
+      "https://images.pexels.com/photos/1232931/pexels-photo-1232931.jpeg",
+      "https://images.unsplash.com/photo-1589674668791-4889d2bba4c6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwyfHxkaWFtb25kJTIwcmluZ3xlbnwwfHx8fDE3NDk1MTA0Mjd8MA&ixlib=rb-4.1.0&q=85"
+    ],
+    "defaultSpecs": {
+      "metal": "Gold",
+      "purity": "18K",
+      "weight": "2.5g",
+      "stone": "Diamond",
+      "stone_quality": "SI IJ"
+    }
+  },
+  {
+    "id": "BS002E",
+    "name": "Elegant Drop Earrings",
+    "category": "Earrings",
+    "price": 21345,
+    "description": "Elegant and contemporary, these delicate gold earrings feature a graceful drop design that adds a touch of modern sophistication to any outfit.",
+    "images": [
+      "https://images.unsplash.com/photo-1671644730555-916aa8d8157f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwzfHxnb2xkJTIwZWFycmluZ3N8ZW58MHx8fHwxNzQ5NTEwNDMyfDA&ixlib=rb-4.1.0&q=85",
+      "https://images.pexels.com/photos/32464544/pexels-photo-32464544.jpeg",
+      "https://images.pexels.com/photos/32455020/pexels-photo-32455020.jpeg"
+    ],
+    "defaultSpecs": {
+      "metal": "Gold",
+      "purity": "18K",
+      "weight": "3.1g",
+      "stone": "None"
+    }
+  },
+  {
+    "id": "BS003P",
+    "name": "Advait Pendant",
+    "category": "Pendants",
+    "price": 14920,
+    "description": "A charming and romantic heart pendant, crafted in beautiful gold. It's a perfect gift and a lovely way to express your feelings with elegance.",
+    "images": [
+      "https://images.unsplash.com/photo-1634833132582-b8232d09619b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxnb2xkJTIwcGVuZGFudHxlbnwwfHx8fDE3NDk1MTA0Mzh8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1602752250055-5ebb552fc3ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxnb2xkJTIwcGVuZGFudHxlbnwwfHx8fDE3NDk1MTA0Mzh8MA&ixlib=rb-4.1.0&q=85",
+      "https://images.pexels.com/photos/32480611/pexels-photo-32480611.jpeg"
+    ],
+    "defaultSpecs": {
+      "metal": "Gold",
+      "purity": "18K",
+      "weight": "1.8g",
+      "stone": "Diamond",
+      "stone_quality": "SI IJ"
+    }
+  },
+  {
+    "id": "BS004B",
+    "name": "Sparkling Tennis Bracelet",
+    "category": "Bracelets",
+    "price": 45112,
+    "description": "An exquisite tennis bracelet that combines modern design with timeless elegance. Its continuous line of sparkling diamonds makes it a standout piece for any occasion.",
+    "images": [
+      "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxkaWFtb25kJTIwYnJhY2VsZXR8ZW58MHx8fHwxNzQ5NTEwNDQzfDA&ixlib=rb-4.1.0&q=85",
+      "https://images.pexels.com/photos/9987796/pexels-photo-9987796.jpeg",
+      "https://images.unsplash.com/photo-1663568675454-ecd65012d8f0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwzfHxkaWFtb25kJTIwYnJhY2VsZXR8ZW58MHx8fHwxNzQ5NTEwNDQzfDA&ixlib=rb-4.1.0&q=85"
+    ],
+    "defaultSpecs": {
+      "metal": "Rose Gold",
+      "purity": "18K",
+      "weight": "5.2g",
+      "stone": "Diamond",
+      "stone_quality": "SI IJ"
+    }
+  },
+  {
+    "id": "BS005N",
+    "name": "Chain Statement Necklace",
+    "category": "Necklaces",
+    "price": 55890,
+    "description": "A stunning statement piece from our collection, this platinum necklace features layered chains and a captivating design, perfect for elevating any outfit from casual to formal.",
+    "images": [
+      "https://images.unsplash.com/photo-1719862056514-0cdacd9142b5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHxwbGF0aW51bSUyMG5lY2tsYWNlfGVufDB8fHx8MTc0OTUxMDQ0OXww&ixlib=rb-4.1.0&q=85",
+      "https://images.pexels.com/photos/27549321/pexels-photo-27549321.jpeg",
+      "https://images.unsplash.com/photo-1671663906664-9586041c3aa1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxwbGF0aW51bSUyMG5lY2tsYWNlfGVufDB8fHx8MTc0OTUxMDQ0OXww&ixlib=rb-4.1.0&q=85"
+    ],
+    "defaultSpecs": {
+      "metal": "Platinum",
+      "purity": "PT 950",
+      "weight": "6.0g",
+      "stone": "Diamond",
+      "stone_quality": "VVS EF"
+    }},
+    {
+      "id": "JW001R",
+      "name": "Classic Solitaire Diamond Ring",
+      "category": "Rings",
+      "price": 28550,
+      "description": "A testament to classic beauty, this ring features a brilliant solitaire diamond set in a lustrous gold band, perfect for engagements or as a statement piece.",
+      "images": [
+        "https://images.pexels.com/photos/691046/pexels-photo-691046.jpeg",
+        "https://images.pexels.com/photos/1232931/pexels-photo-1232931.jpeg",
+        "https://images.unsplash.com/photo-1589674668791-4889d2bba4c6?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzh8MHwxfHNlYXJjaHwyfHxkaWFtb25kJTIwcmluZ3xlbnwwfHx8fDE3NDk1MTA0Mjd8MA&ixlib=rb-4.1.0&q=85"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "18K",
+        "weight": "2.5g",
+        "stone": "Diamond",
+        "stone_quality": "SI IJ"
+      }
+    },
+    {
+      "id": "JW002R",
+      "name": "Vintage Gold Wedding Band",
+      "category": "Rings",
+      "price": 15750,
+      "description": "Elegant vintage-inspired wedding band crafted in 18K gold with intricate detailing that speaks of timeless romance.",
+      "images": [
+        "https://images.pexels.com/photos/94843/pexels-photo-94843.jpeg",
+        "https://images.unsplash.com/photo-1588128211445-38bc87d6fef2",
+        "https://images.unsplash.com/photo-1553915632-175f60dd8e36"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "18K",
+        "weight": "4.2g",
+        "stone": "None",
+        "stone_quality": "N/A"
+      }
+    },
+    {
+      "id": "JW003R",
+      "name": "Citrine Gemstone Cocktail Ring",
+      "category": "Rings",
+      "price": 32400,
+      "description": "Bold and beautiful cocktail ring featuring a stunning citrine gemstone in an ornate gold setting, perfect for special occasions.",
+      "images": [
+        "https://images.unsplash.com/photo-1653190262923-fa971c552377",
+        "https://images.pexels.com/photos/32492521/pexels-photo-32492521.jpeg",
+        "https://images.unsplash.com/photo-1646371294334-d4a342578cf4"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "14K",
+        "weight": "6.8g",
+        "stone": "Citrine",
+        "stone_quality": "AAA"
+      }
+    },
+    {
+      "id": "JW004E",
+      "name": "Diamond Stud Earrings",
+      "category": "Earrings",
+      "price": 45200,
+      "description": "Classic diamond stud earrings that epitomize elegance. These brilliant cut diamonds are perfect for everyday wear or special occasions.",
+      "images": [
+        "https://images.pexels.com/photos/2849743/pexels-photo-2849743.jpeg",
+        "https://images.pexels.com/photos/10976654/pexels-photo-10976654.jpeg",
+        "https://images.unsplash.com/photo-1588444650733-d0767b753fc8"
+      ],
+      "defaultSpecs": {
+        "metal": "White Gold",
+        "purity": "18K",
+        "weight": "2.1g",
+        "stone": "Diamond",
+        "stone_quality": "VVS EF"
+      }
+    },
+    {
+      "id": "JW005E",
+      "name": "Elegant Gold Drop Earrings",
+      "category": "Earrings",
+      "price": 21345,
+      "description": "Elegant and contemporary, these delicate gold earrings feature a graceful drop design that adds a touch of modern sophistication.",
+      "images": [
+        "https://images.unsplash.com/photo-1671644730555-916aa8d8157f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwzfHxnb2xkJTIwZWFycmluZ3N8ZW58MHx8fHwxNzQ5NTEwNDMyfDA&ixlib=rb-4.1.0&q=85",
+        "https://images.pexels.com/photos/32464544/pexels-photo-32464544.jpeg",
+        "https://images.pexels.com/photos/32455020/pexels-photo-32455020.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "18K",
+        "weight": "3.1g",
+        "stone": "None",
+        "stone_quality": "N/A"
+      }
+    },
+    {
+      "id": "JW006E",
+      "name": "Crystal Chandelier Earrings",
+      "category": "Earrings",
+      "price": 18900,
+      "description": "Dramatic chandelier earrings featuring cascading crystals that catch the light beautifully, perfect for evening events.",
+      "images": [
+        "https://images.unsplash.com/photo-1693212793204-bcea856c75fe",
+        "https://images.pexels.com/photos/32432815/pexels-photo-32432815.jpeg",
+        "https://images.unsplash.com/photo-1588444650733-d0767b753fc8"
+      ],
+      "defaultSpecs": {
+        "metal": "Silver",
+        "purity": "925",
+        "weight": "4.5g",
+        "stone": "Crystal",
+        "stone_quality": "Premium"
+      }
+    },
+    {
+      "id": "JW007N",
+      "name": "Pearl Floral Statement Necklace",
+      "category": "Necklaces",
+      "price": 67500,
+      "description": "Exquisite floral-inspired necklace featuring lustrous pearls arranged in an artistic pattern, a true masterpiece of jewelry craftsmanship.",
+      "images": [
+        "https://images.unsplash.com/photo-1474585628895-4579822e21a8",
+        "https://images.unsplash.com/photo-1640083239745-9bbd77a2097f",
+        "https://images.pexels.com/photos/11561973/pexels-photo-11561973.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "18K",
+        "weight": "12.3g",
+        "stone": "Pearl",
+        "stone_quality": "Cultured AAA"
+      }
+    },
+    {
+      "id": "JW008N",
+      "name": "Multi-Strand Pearl Choker",
+      "category": "Necklaces",
+      "price": 43200,
+      "description": "Sophisticated multi-strand pearl choker that adds timeless elegance to any ensemble, perfect for formal occasions.",
+      "images": [
+        "https://images.unsplash.com/photo-1718312267033-a334b0a2720f",
+        "https://images.pexels.com/photos/11561973/pexels-photo-11561973.jpeg",
+        "https://images.unsplash.com/photo-1640083239745-9bbd77a2097f"
+      ],
+      "defaultSpecs": {
+        "metal": "White Gold",
+        "purity": "14K",
+        "weight": "8.7g",
+        "stone": "Pearl",
+        "stone_quality": "Cultured A+"
+      }
+    },
+    {
+      "id": "JW009N",
+      "name": "Platinum Chain Statement Necklace",
+      "category": "Necklaces",
+      "price": 55890,
+      "description": "A stunning statement piece featuring layered chains in platinum, perfect for elevating any outfit from casual to formal.",
+      "images": [
+        "https://images.unsplash.com/photo-1719862056514-0cdacd9142b5?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwyfHxwbGF0aW51bSUyMG5lY2tsYWNlfGVufDB8fHx8MTc0OTUxMDQ0OXww&ixlib=rb-4.1.0&q=85",
+        "https://images.pexels.com/photos/27549321/pexels-photo-27549321.jpeg",
+        "https://images.unsplash.com/photo-1671663906664-9586041c3aa1?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1NzZ8MHwxfHNlYXJjaHwxfHxwbGF0aW51bSUyMG5lY2tsYWNlfGVufDB8fHx8MTc0OTUxMDQ0OXww&ixlib=rb-4.1.0&q=85"
+      ],
+      "defaultSpecs": {
+        "metal": "Platinum",
+        "purity": "PT 950",
+        "weight": "6.0g",
+        "stone": "Diamond",
+        "stone_quality": "VVS EF"
+      }
+    },
+    {
+      "id": "JW010N",
+      "name": "Gold Letter Pendant Necklace",
+      "category": "Necklaces",
+      "price": 14920,
+      "description": "Personalized initial pendant in beautiful gold, a perfect way to carry a piece of your identity with elegant style.",
+      "images": [
+        "https://images.unsplash.com/photo-1733761013921-89d19f4a2194",
+        "https://images.unsplash.com/photo-1634833132582-b8232d09619b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxnb2xkJTIwcGVuZGFudHxlbnwwfHx8fDE3NDk1MTA0Mzh8MA&ixlib=rb-4.1.0&q=85",
+        "https://images.pexels.com/photos/32480611/pexels-photo-32480611.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "18K",
+        "weight": "1.8g",
+        "stone": "Diamond",
+        "stone_quality": "SI IJ"
+      }
+    },
+    {
+      "id": "JW011N",
+      "name": "Layered Chain Necklace Set",
+      "category": "Necklaces",
+      "price": 24600,
+      "description": "Trendy layered necklace set featuring multiple chain lengths for a contemporary stacked look that's perfect for everyday wear.",
+      "images": [
+        "https://images.pexels.com/photos/16347200/pexels-photo-16347200.jpeg",
+        "https://images.unsplash.com/photo-1609445110633-375fa5a8ef8b",
+        "https://images.unsplash.com/photo-1733761013921-89d19f4a2194"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "14K",
+        "weight": "5.2g",
+        "stone": "None",
+        "stone_quality": "N/A"
+      }
+    },
+    {
+      "id": "JW012B",
+      "name": "Sparkling Diamond Tennis Bracelet",
+      "category": "Bracelets",
+      "price": 45112,
+      "description": "Exquisite tennis bracelet featuring a continuous line of sparkling diamonds, a timeless piece for any jewelry collection.",
+      "images": [
+        "https://images.unsplash.com/photo-1619119069152-a2b331eb392a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwxfHxkaWFtb25kJTIwYnJhY2VsZXR8ZW58MHx8fHwxNzQ5NTEwNDQzfDA&ixlib=rb-4.1.0&q=85",
+        "https://images.pexels.com/photos/9987796/pexels-photo-9987796.jpeg",
+        "https://images.unsplash.com/photo-1663568675454-ecd65012d8f0?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDQ2NDF8MHwxfHNlYXJjaHwzfHxkaWFtb25kJTIwYnJhY2VsZXR8ZW58MHx8fHwxNzQ5NTEwNDQzfDA&ixlib=rb-4.1.0&q=85"
+      ],
+      "defaultSpecs": {
+        "metal": "Rose Gold",
+        "purity": "18K",
+        "weight": "5.2g",
+        "stone": "Diamond",
+        "stone_quality": "SI IJ"
+      }
+    },
+    {
+      "id": "JW013B",
+      "name": "Silver Chain Bracelet",
+      "category": "Bracelets",
+      "price": 12850,
+      "description": "Elegant silver chain bracelet with a modern design, perfect for everyday wear or layering with other pieces.",
+      "images": [
+        "https://images.unsplash.com/photo-1744722093742-aad22c7fa68b",
+        "https://images.pexels.com/photos/8706581/pexels-photo-8706581.jpeg",
+        "https://images.pexels.com/photos/9637586/pexels-photo-9637586.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "Silver",
+        "purity": "925",
+        "weight": "3.8g",
+        "stone": "None",
+        "stone_quality": "N/A"
+      }
+    },
+    {
+      "id": "JW014P",
+      "name": "Delicate Gold Heart Pendant",
+      "category": "Pendants",
+      "price": 16200,
+      "description": "Charming heart pendant in lustrous gold, a symbol of love that makes the perfect romantic gift.",
+      "images": [
+        "https://images.unsplash.com/photo-1602752250055-5ebb552fc3ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwzfHxnb2xkJTIwcGVuZGFudHxlbnwwfHx8fDE3NDk1MTA0Mzh8MA&ixlib=rb-4.1.0&q=85",
+        "https://images.unsplash.com/photo-1634833132582-b8232d09619b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxnb2xkJTIwcGVuZGFudHxlbnwwfHx8fDE3NDk1MTA0Mzh8MA&ixlib=rb-4.1.0&q=85",
+        "https://images.pexels.com/photos/32480611/pexels-photo-32480611.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "18K",
+        "weight": "1.8g",
+        "stone": "Diamond",
+        "stone_quality": "SI IJ"
+      }
+    },
+    {
+      "id": "JW015R",
+      "name": "Aquamarine Gold Ring",
+      "category": "Rings",
+      "price": 39750,
+      "description": "Stunning aquamarine ring set in yellow gold, featuring the serene blue beauty of this precious gemstone.",
+      "images": [
+        "https://images.unsplash.com/photo-1646371294334-d4a342578cf4",
+        "https://images.pexels.com/photos/32492521/pexels-photo-32492521.jpeg",
+        "https://images.unsplash.com/photo-1653190262923-fa971c552377"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "18K",
+        "weight": "4.7g",
+        "stone": "Aquamarine",
+        "stone_quality": "Premium"
+      }
+    },
+    {
+      "id": "JW016E",
+      "name": "Rose Gold Hoop Earrings",
+      "category": "Earrings",
+      "price": 22400,
+      "description": "Classic hoop earrings in warm rose gold, a versatile piece that complements any style from casual to elegant.",
+      "images": [
+        "https://images.pexels.com/photos/32464544/pexels-photo-32464544.jpeg",
+        "https://images.pexels.com/photos/32455020/pexels-photo-32455020.jpeg",
+        "https://images.unsplash.com/photo-1671644730555-916aa8d8157f?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NDk1Nzd8MHwxfHNlYXJjaHwzfHxnb2xkJTIwZWFycmluZ3N8ZW58MHx8fHwxNzQ5NTEwNDMyfDA&ixlib=rb-4.1.0&q=85"
+      ],
+      "defaultSpecs": {
+        "metal": "Rose Gold",
+        "purity": "14K",
+        "weight": "2.9g",
+        "stone": "None",
+        "stone_quality": "N/A"
+      }
+    },
+    {
+      "id": "JW017N",
+      "name": "Opal Statement Necklace",
+      "category": "Necklaces",
+      "price": 52300,
+      "description": "Magnificent opal statement necklace showcasing the rainbow fire of this mystical gemstone in an elegant setting.",
+      "images": [
+        "https://images.unsplash.com/photo-1634076665897-7af1821ef7dc",
+        "https://images.unsplash.com/photo-1640083239745-9bbd77a2097f",
+        "https://images.pexels.com/photos/27549321/pexels-photo-27549321.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "White Gold",
+        "purity": "18K",
+        "weight": "8.1g",
+        "stone": "Opal",
+        "stone_quality": "AAA Fire"
+      }
+    },
+    {
+      "id": "JW018B",
+      "name": "Gold Charm Bracelet",
+      "category": "Bracelets",
+      "price": 28900,
+      "description": "Delightful charm bracelet in gold featuring various symbolic charms, perfect for collecting memories and milestones.",
+      "images": [
+        "https://images.pexels.com/photos/9637586/pexels-photo-9637586.jpeg",
+        "https://images.pexels.com/photos/8706581/pexels-photo-8706581.jpeg",
+        "https://images.unsplash.com/photo-1744722093742-aad22c7fa68b"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "14K",
+        "weight": "6.3g",
+        "stone": "Various",
+        "stone_quality": "Mixed"
+      }
+    },
+    {
+      "id": "JW019R",
+      "name": "White Gold Wedding Band Set",
+      "category": "Rings",
+      "price": 34500,
+      "description": "Elegant matching wedding band set in white gold, symbolizing eternal love and commitment with timeless design.",
+      "images": [
+        "https://images.unsplash.com/photo-1481980235850-66e47651e431",
+        "https://images.unsplash.com/photo-1588128211445-38bc87d6fef2",
+        "https://images.pexels.com/photos/94843/pexels-photo-94843.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "White Gold",
+        "purity": "18K",
+        "weight": "7.2g",
+        "stone": "Diamond",
+        "stone_quality": "VS F-G"
+      }
+    },
+    {
+      "id": "JW020E",
+      "name": "Traditional Bridal Earrings",
+      "category": "Earrings",
+      "price": 58700,
+      "description": "Ornate traditional bridal earrings featuring intricate goldwork and precious stones, perfect for wedding ceremonies.",
+      "images": [
+        "https://images.pexels.com/photos/32432815/pexels-photo-32432815.jpeg",
+        "https://images.pexels.com/photos/32483856/pexels-photo-32483856.jpeg",
+        "https://images.unsplash.com/photo-1600685890506-593fdf55949b"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "22K",
+        "weight": "12.5g",
+        "stone": "Ruby, Pearl",
+        "stone_quality": "Premium"
+      }
+    },
+    {
+      "id": "JW021N",
+      "name": "Silver Statement Choker",
+      "category": "Necklaces",
+      "price": 19800,
+      "description": "Bold silver choker with contemporary design elements, making a strong fashion statement for modern women.",
+      "images": [
+        "https://images.unsplash.com/photo-1609445110633-375fa5a8ef8b",
+        "https://images.pexels.com/photos/16347200/pexels-photo-16347200.jpeg",
+        "https://images.unsplash.com/photo-1733761013921-89d19f4a2194"
+      ],
+      "defaultSpecs": {
+        "metal": "Silver",
+        "purity": "925",
+        "weight": "4.6g",
+        "stone": "None",
+        "stone_quality": "N/A"
+      }
+    },
+    {
+      "id": "JW022R",
+      "name": "Triangle Diamond Ring",
+      "category": "Rings",
+      "price": 42100,
+      "description": "Modern triangle-cut diamond ring that breaks traditional boundaries with its geometric beauty and contemporary appeal.",
+      "images": [
+        "https://images.pexels.com/photos/32492523/pexels-photo-32492523.jpeg",
+        "https://images.pexels.com/photos/32492521/pexels-photo-32492521.jpeg",
+        "https://images.unsplash.com/photo-1653190262923-fa971c552377"
+      ],
+      "defaultSpecs": {
+        "metal": "Platinum",
+        "purity": "PT 950",
+        "weight": "3.9g",
+        "stone": "Diamond",
+        "stone_quality": "VVS D"
+      }
+    },
+    {
+      "id": "JW023B",
+      "name": "Rose Gold Bangle Set",
+      "category": "Bracelets",
+      "price": 33600,
+      "description": "Elegant set of rose gold bangles with delicate patterns, perfect for stacking or wearing individually.",
+      "images": [
+        "https://images.pexels.com/photos/8706581/pexels-photo-8706581.jpeg",
+        "https://images.unsplash.com/photo-1744722093742-aad22c7fa68b",
+        "https://images.pexels.com/photos/9637586/pexels-photo-9637586.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "Rose Gold",
+        "purity": "18K",
+        "weight": "9.1g",
+        "stone": "None",
+        "stone_quality": "N/A"
+      }
+    },
+    {
+      "id": "JW024N",
+      "name": "Traditional Bridal Jewelry Set",
+      "category": "Necklaces",
+      "price": 125000,
+      "description": "Complete traditional bridal set featuring necklace, earrings, and maang tikka in intricate gold work with precious stones.",
+      "images": [
+        "https://images.pexels.com/photos/32483856/pexels-photo-32483856.jpeg",
+        "https://images.unsplash.com/photo-1600685890506-593fdf55949b",
+        "https://images.pexels.com/photos/32432815/pexels-photo-32432815.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "22K",
+        "weight": "45.7g",
+        "stone": "Ruby, Emerald, Pearl",
+        "stone_quality": "Premium AAA"
+      }
+    },
+    {
+      "id": "JW025P",
+      "name": "Emerald Drop Pendant",
+      "category": "Pendants",
+      "price": 48900,
+      "description": "Exquisite emerald drop pendant surrounded by diamonds, showcasing the rich green beauty of this precious gemstone.",
+      "images": [
+        "https://images.unsplash.com/photo-1634076665897-7af1821ef7dc",
+        "https://images.unsplash.com/photo-1634833132582-b8232d09619b?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2Nzd8MHwxfHNlYXJjaHwxfHxnb2xkJTIwcGVuZGFudHxlbnwwfHx8fDE3NDk1MTA0Mzh8MA&ixlib=rb-4.1.0&q=85",
+        "https://images.pexels.com/photos/32480611/pexels-photo-32480611.jpeg"
+      ],
+      "defaultSpecs": {
+        "metal": "Gold",
+        "purity": "18K",
+        "weight": "3.2g",
+        "stone": "Emerald, Diamond",
+        "stone_quality": "AAA, VS"
+      }
+    }
+  ]

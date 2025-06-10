@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlueStone Clone - Online Jewellery Shopping</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Using Google Fonts to import Lato -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Link to Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <!-- Top Bar -->
+        <div class="top-bar">
+            <div class="container">
+                <span>1800-419-0066</span> |
+                <span>Video Call Cart</span> |
+                <span>Login</span> |
+                <span>Signup</span>
+            </div>
+        </div>
+    
+        <!-- Main Header -->
+        <div class="main-header">
+            <div class="container">
+                <div class="logo">
+                    <a href="/"><img src="images/bluestone-logo.webp" alt="BlueStone Logo"></a>
+                </div>
+    
+                <div class="search-bar">
+                    <input type="text" placeholder="Search for Jewellery">
+                    <button class="search-btn">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+    
+                <!-- This is the hamburger icon that will appear on mobile -->
+                <button class="mobile-menu-toggle">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+    
+                <!-- These are the desktop-only user actions -->
+                <div class="user-actions">
+                    <a href="#" class="action-item">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Recently Viewed</span>
+                    </a>
+                    <a href="#" class="action-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <span>Locate Our Store</span>
+                    </a>
+                    <a href="wishlist.html" class="action-item">
+                        <i class="fa-regular fa-heart"></i>
+                        <span>Wishlist</span>
+                        <span id="wishlist-counter" class="cart-counter">0</span>
+                    </a>
+                    <a href="cart.html" class="action-item">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Cart</span>
+                        <span id="cart-counter" class="cart-counter">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Main Navigation (now includes the mobile header) -->
+        <nav class="main-nav">
+            <div class="mobile-nav-header">
+                <span>MENU</span>
+                <button class="mobile-menu-close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        
+
+            <div class="container nav-container">
+                <ul>
+                    <!-- ======================= 10+1 Monthly Plan (Simple Link) ======================= -->
+                    <li><a href="#">10+1 Monthly Plan</a></li>
+            
+                    <!-- ======================= Watch Jewellery (Simple Dropdown) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=watch-jewellery">Watch Jewellery <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown-simple">
+                            <a href="product-listing.html?type=watch-charm">Charm</a>
+                            <a href="product-listing.html?type=watch-band">Band</a>
+                            <a href="product-listing.html?type=watch-pin">Pin</a>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Rings (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=rings">Rings <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                <div class="mega-menu-column">
+                                    <h4>Popular Ring Types</h4>
+                                    <a href="product-listing.html?type=engagement-rings">Engagement</a>
+                                    <a href="product-listing.html?type=couple-bands">Couple Bands</a>
+                                    <a href="product-listing.html?type=office-wear-rings">Office Wear</a>
+                                    <a href="product-listing.html?type=stackable-rings">Stackable</a>
+                                    <a href="product-listing.html?type=religious-rings">Religious</a>
+                                    <a href="product-listing.html?type=platinum-bands">Platinum Bands</a>
+                                    <a href="product-listing.html?type=mens-rings">For Men</a>
+                                    <a href="product-listing.html?type=gift-rings">For Gift</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Price Range</h4>
+                                    <a href="product-listing.html?price=0-10000">Below 10,000</a>
+                                    <a href="product-listing.html?price=10000-20000">10,000 - 20,000</a>
+                                    <a href="product-listing.html?price=20000-30000">20,000 - 30,000</a>
+                                    <a href="product-listing.html?price=30000-40000">30,000 - 40,000</a>
+                                    <a href="product-listing.html?price=40000-50000">40,000 - 50,000</a>
+                                    <a href="product-listing.html?price=50000-999999">50,000 and above</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Metals & Stones</h4>
+                                    <a href="product-listing.html?category=rings&metal=diamond">Diamond Rings</a>
+                                    <a href="product-listing.html?category=rings&metal=gold">Gold Rings</a>
+                                    <a href="product-listing.html?category=rings&metal=white-gold">White Gold Rings</a>
+                                    <a href="product-listing.html?category=rings&metal=rose-gold">Rose Gold Rings</a>
+                                    <a href="product-listing.html?category=rings&metal=platinum">Platinum Rings</a>
+                                    <a href="product-listing.html?category=solitaire-rings">Solitaire Rings</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg5.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/menu-ring.jpg" alt="Featured Ring">
+                                    <span>Livina Stacks of Love</span>
+                                    <a href="product-listing.html?category=rings" class="btn btn-secondary" style="margin-top:15px;">View All Rings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- ======================= Earrings (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=earrings">Earrings <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                 <div class="mega-menu-column">
+                                    <h4>Popular Earring Types</h4>
+                                    <a href="product-listing.html?type=studs">Studs</a>
+                                    <a href="product-listing.html?type=drops">Drops</a>
+                                    <a href="product-listing.html?type=sui-dhaga">Sui Dhaga</a>
+                                    <a href="product-listing.html?type=jhumkas">Jhumkas</a>
+                                    <a href="product-listing.html?type=chandbali">Chandbali</a>
+                                    <a href="product-listing.html?type=front-back">Front Back</a>
+                                    <a href="product-listing.html?type=ear-cuffs">Ear Cuffs</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Price Range</h4>
+                                    <a href="product-listing.html?category=earrings&price=0-10000">Below 10,000</a>
+                                    <a href="product-listing.html?category=earrings&price=10000-20000">10,000 - 20,000</a>
+                                    <a href="product-listing.html?category=earrings&price=20000-30000">20,000 - 30,000</a>
+                                    <a href="product-listing.html?category=earrings&price=30000-40000">30,000 - 40,000</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Metals & Stones</h4>
+                                    <a href="product-listing.html?category=earrings&metal=diamond">Diamond Earrings</a>
+                                    <a href="product-listing.html?category=earrings&metal=gold">Gold Earrings</a>
+                                    <a href="product-listing.html?category=earrings&metal=white-gold">White Gold Earrings</a>
+                                    <a href="product-listing.html?category=earrings&metal=gemstone">Gemstone Earrings</a>
+                                    <a href="product-listing.html?category=solitaire-earrings">Solitaire Earrings</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg7.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/earring.jpg" alt="Featured Earring">
+                                    <span>For The Men</span>
+                                     <a href="product-listing.html?category=earrings" class="btn btn-secondary" style="margin-top:15px;">View All Earrings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Pendants (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=pendants">Pendants <i class="fa-solid fa-angle-down"></i></a>
+                         <div class="mega-menu">
+                            <div class="container">
+                                 <div class="mega-menu-column">
+                                    <h4>Popular Pendant Types</h4>
+                                    <a href="product-listing.html?type=alphabet-pendants">Alphabet</a>
+                                    <a href="product-listing.html?type=religious-pendants">Religious</a>
+                                    <a href="product-listing.html?type=fashion-pendants">Fashion</a>
+                                    <a href="product-listing.html?type=heart-pendants">Heart Shaped</a>
+                                    <a href="product-listing.html?type=lockets">Lockets</a>
+                                    <a href="product-listing.html?type=office-wear-pendants">Office Wear</a>
+                                    <a href="product-listing.html?type=kids-pendants">For Kids</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Price Range</h4>
+                                    <a href="product-listing.html?category=pendants&price=0-10000">Below 10,000</a>
+                                    <a href="product-listing.html?category=pendants&price=10000-20000">10,000 - 20,000</a>
+                                    <a href="product-listing.html?category=pendants&price=20000-30000">20,000 - 30,000</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Metals & Stones</h4>
+                                    <a href="product-listing.html?category=pendants&metal=diamond">Diamond Pendants</a>
+                                    <a href="product-listing.html?category=pendants&metal=gold">Gold Pendants</a>
+                                    <a href="product-listing.html?category=pendants&metal=gemstone">Gemstone Pendants</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                     <img src="https://kinclimg5.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/pendant.jpg" alt="Featured Pendant">
+                                    <span>Diva-fine Diamonds</span>
+                                    <a href="product-listing.html?category=pendants" class="btn btn-secondary" style="margin-top:15px;">View All Pendants</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Solitaires (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=solitaires">Solitaires <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg3.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/solitaire-ring.v1.png" alt="Solitaire Ring">
+                                    <a href="product-listing.html?category=solitaire-rings">Solitaire Rings</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                     <img src="https://kinclimg1.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/solitaire-pendant.v1.png" alt="Solitaire Pendant">
+                                    <a href="product-listing.html?category=solitaire-pendants">Solitaire Pendants</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg9.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/solitaire-earring.v1.png" alt="Solitaire Earrings">
+                                    <a href="product-listing.html?category=solitaire-earrings">Solitaire Earrings</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Diamond Education</h4>
+                                    <a href="#">Cut</a>
+                                    <a href="#">Colour</a>
+                                    <a href="#">Clarity</a>
+                                    <a href="#">Certification</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- ======================= All Jewellery (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=all">All Jewellery <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                <div class="mega-menu-column">
+                                    <h4>Shop By Category</h4>
+                                    <a href="product-listing.html?category=bangles">Bangles</a>
+                                    <a href="product-listing.html?category=bracelets">Bracelets</a>
+                                    <a href="product-listing.html?category=earrings">Earrings</a>
+                                    <a href="product-listing.html?category=gold-chains">Gold Chains</a>
+                                    <a href="product-listing.html?category=nose-pins">Nose Pins</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Men's Jewellery</h4>
+                                    <a href="product-listing.html?category=mens-rings">Rings</a>
+                                    <a href="product-listing.html?category=mens-bracelets">Bracelets</a>
+                                    <a href="product-listing.html?category=mens-chains">Chains</a>
+                                    <a href="product-listing.html?category=mens-studs">Studs</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Gold Jewellery</h4>
+                                     <a href="product-listing.html?metal=gold&category=bangles">Bangles</a>
+                                     <a href="product-listing.html?metal=gold&category=bracelets">Bracelets</a>
+                                     <a href="product-listing.html?metal=gold&category=earrings">Earrings</a>
+                                     <a href="product-listing.html?metal=gold&category=rings">Rings</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Diamond Jewellery</h4>
+                                     <a href="product-listing.html?metal=diamond&category=bangles">Bangles</a>
+                                     <a href="product-listing.html?metal=diamond&category=bracelets">Bracelets</a>
+                                     <a href="product-listing.html?metal=diamond&category=earrings">Earrings</a>
+                                     <a href="product-listing.html?metal=diamond&category=rings">Rings</a>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    
+                    <!-- ======================= Gifts (Mega Menu) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=gifts">Gifts <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="mega-menu">
+                            <div class="container">
+                                <div class="mega-menu-column">
+                                    <h4>Gifts By Occasion</h4>
+                                    <a href="product-listing.html?occasion=anniversary">Anniversary</a>
+                                    <a href="product-listing.html?occasion=birthday">Birthday</a>
+                                    <a href="product-listing.html?occasion=engagement">Engagement</a>
+                                    <a href="product-listing.html?occasion=wedding">Wedding</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>By Price Range</h4>
+                                    <a href="product-listing.html?category=gifts&price=0-10000">Below 10,000</a>
+                                    <a href="product-listing.html?category=gifts&price=10000-20000">10,000 - 20,000</a>
+                                    <a href="product-listing.html?category=gifts&price=20000-30000">20,000 - 30,000</a>
+                                    <a href="product-listing.html?category=gifts&price=30000-40000">30,000 - 40,000</a>
+                                </div>
+                                <div class="mega-menu-column">
+                                    <h4>Gifts For Special Someone</h4>
+                                    <a href="product-listing.html?recipient=her">For HER</a>
+                                    <a href="product-listing.html?recipient=him">For HIM</a>
+                                    <a href="product-listing.html?recipient=sister">For SISTER</a>
+                                    <a href="product-listing.html?recipient=mother">For MOTHER</a>
+                                </div>
+                                <div class="mega-menu-column mega-menu-image">
+                                    <img src="https://kinclimg3.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/giftcard.jpg" alt="Gift Card">
+                                    <span>BlueStone Gift Cards</span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Gold Coins (Simple Dropdown) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="product-listing.html?category=gold-coins">Gold Coins <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown-simple">
+                            <a href="product-detail.html?id=GC001">0.5 gram</a>
+                            <a href="product-detail.html?id=GC002">1 gram</a>
+                            <a href="product-detail.html?id=GC003">2 gram</a>
+                            <a href="product-detail.html?id=GC004">5 gram</a>
+                            <a href="product-detail.html?id=GC005">10 gram</a>
+                        </div>
+                    </li>
+            
+                    <!-- ======================= Offers (Simple Dropdown) ======================= -->
+                    <li class="nav-item has-dropdown">
+                        <a href="#" class="offers-link">Offers <i class="fa-solid fa-angle-down"></i></a>
+                        <div class="dropdown-simple">
+                            <a href="product-listing.html?offers=diamond">Upto 20% Off On Diamond Prices</a>
+                            <a href="product-listing.html?offers=making-charges">20% Off On Making Charges</a>
+                            <a href="product-listing.html?offers=flat-10">Flat 10% Off</a>
+                            <a href="product-listing.html?offers=all">All Offers</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero-section">
+            <div class="video-container">
+                <video width="100%" autoplay loop muted playsinline poster="images/hero-banner-1.jpg"
+                    class="hero-video">
+                    <!-- 
+                        NOTE: This is a placeholder video. 
+                        You can replace this with a locally saved video file.
+                        For example: src="videos/radiant-romance.mp4" 
+                        -->
+                    <source
+                        src="https://kinvid1.bluestone.com/output/mp4/bluestone-valentine-25-v2.mp4/bluestone-valentine-25-v2.mp4"
+                        type="video/mp4">
+                </video>
+            </div>
+            <div class="hero-text">
+                <h1>Radiant <sub>Romance!</sub></h1>
+            </div>
+        </section>
+
+        <!-- ========== Shop by Category Section (with direct image links) ========== -->
+        <section class="shop-by-category">
+            <div class="container category-grid-container">
+                <!-- Row 1 -->
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/solitaires.png"
+                        alt="Solitaires"><span>Solitaires</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/watch-jewellery.png"
+                        alt="Watch Jewellery"><span>Watch Jewellery</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/mens_v1.png"
+                        alt="Men's Jewellery"><span>Men's Jewellery</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/mangalsutras.png"
+                        alt="Mangalsutras"><span>Mangalsutras</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/nose-pins.png"
+                        alt="Nose Pins"><span>Nose Pins</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/d-kids_v1.png"
+                        alt="Kids Jewellery"><span>Kids Jewellery</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/coins.png" alt="Gold Coins"><span>Gold
+                        Coins</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/anklets.png"
+                        alt="Anklets"><span>Anklets</span></a>
+                <!-- Row 2 -->
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/pendants.png"
+                        alt="Pendants"><span>Pendants</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/rings_v1.png"
+                        alt="Rings"><span>Rings</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/necklaces.png"
+                        alt="Necklaces"><span>Necklaces</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/earrings.png"
+                        alt="Earrings"><span>Earrings</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bangles.png"
+                        alt="Bangles"><span>Bangles</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bracelets.png"
+                        alt="Bracelets"><span>Bracelets</span></a>
+                <a href="#" class="category-item"><img
+                        src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/chains.png" alt="Gold Chains"><span>Gold
+                        Chains</span></a>
+                <a href="#" class="category-item"><img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/kada.png"
+                        alt="Kada"><span>Kada</span></a>
+            </div>
+
+        </section>
+        <!-- ========== Gold Mine Plan Banner ========== -->
+        <section class="promo-banner">
+            <div class="container promo-container">
+                <div class="promo-text">
+                    <strong>Gold Mine 10+1 Monthly Plan</strong> (Pay 10 installments & enjoy 100% savings on the
+                    11th Month!)
+                </div>
+                <a href="#" style="text-decoration: none;" class="btn btn-enroll">Enroll Now</a>
+            </div>
+        </section>
+
+        <!-- ========== Featured Collections Grid ========== -->
+        <section class="collections-grid">
+            <div class="container grid-container">
+                <div class="collection-card">
+                    <a href="#">
+                        <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/m/mh-hsf_v1.jpg"
+                            alt="Heart So Full Collection">
+                    </a>
+                </div>
+                <div class="collection-card">
+                    <a href="#">
+                        <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/m/mh-barbie.jpg"
+                            alt="Barbie Collection">
+                    </a>
+                </div>
+                <div class="collection-card">
+                    <a href="#">
+                        <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/evil_eye_dcs.jpg"
+                            alt="Evil Eye Collection">
+                    </a>
+                </div>
+            </div>
+            <div class="collections-action">
+                <a href="#" class="btn btn-secondary">Browse all Collections</a>
+            </div>
+        </section>
+
+        <!-- ========== Category & Gift Section ========== -->
+        <section class="category-gift-section">
+            <div class="container four-column-grid">
+                <!-- Card 1: Layered Necklaces -->
+                <a href="#" class="promo-card">
+                    <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/ln.gif" alt="Layered Necklaces">
+                    <h3>Layered Necklaces</h3>
+                    <p>Elevate your style with chic layered necklaces for a trendy look.</p>
+                </a>
+
+                <!-- Card 2: Coveted Styles -->
+                <a href="#" class="promo-card">
+                    <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/ts.gif" alt="Coveted Styles">
+                    <h3>Coveted Styles</h3>
+                    <p>A curated selection of BlueStone's most coveted jewels.</p>
+                </a>
+
+                <!-- Card 3: BlueStone Man -->
+                <a href="#" class="promo-card">
+                    <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bs-man.gif" alt="BlueStone Man">
+                    <h3>BlueStone Man</h3>
+                    <p>Shop the perfect pieces to enhance your man's unique style.</p>
+                </a>
+
+                <!-- Card 4: Perfect Gift Finder -->
+                <div class="gift-card">
+                    <h3>Choose <strong>Perfect Gift</strong> for your loved ones</h3>
+                    <div class="gift-options">
+                        <a href="#" class="gift-option">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/u-10k_v4.png" width="100%"
+                                height="100%" alt="Gift Icon">
+                            <span>Under 10K</span>
+                        </a>
+                        <a href="#" class="gift-option">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/u-30k_v4.png" width="100%"
+                                height="100%" alt="Gift Icon">
+                            <span>Under 30K</span>
+                        </a>
+                        <a href="#" class="gift-option">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/u-50k_v4.png" width="100%"
+                                height="100%" alt="Gift Icon">
+                            <span>Under 50K</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== Campaign Video Section ========== -->
+        <section class="campaign-video-section">
+            <div class="container campaign-container">
+                <div class="campaign-video-player">
+                    <video controls autoplay muted>
+                        <!-- Direct link to a similar high-quality video for demonstration -->
+                        <source src="https://kinvid1.bluestone.com/output/mp4/vs-p_v2.mp4/vs-p_v2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="campaign-hashtag">
+                    <span class="hashtag-line"></span>
+                    <h2>#StrokesofGenius</h2>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== Customer Testimonials Section ========== -->
+        <section class="testimonials-section">
+            <div class="container testimonials-container">
+                <h2>Customer Testimonials</h2>
+                <div class="testimonial-cards">
+                    <div class="testimonial-card">
+                        <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bm1.png"
+                            alt="Photo of Akanksha Khanna">
+                        <h3>Akanksha Khanna, 27</h3>
+                        <p>"Delighted with my engagement ring from BlueStone! It's my dream ring, fits perfectly and is
+                            stunning to look at. Thanks to BlueStone for helping us find the perfect symbol of love!"
+                        </p>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bm3.png"
+                            alt="Photo of Nutan Mishra">
+                        <h3>Nutan Mishra, 33</h3>
+                        <p>"I got a Nazariya for my baby boy from BlueStone. It's so cute seeing it on my little one's
+                            wrist, and it gives me a sense of security knowing it's there. Thanks, BlueStone."</p>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bm4.png"
+                            alt="Photo of Diya Mishra">
+                        <h3>Diya Mishra, 26</h3>
+                        <p>"On Valentine's Day, my husband gifted me a necklace from BlueStone, and I haven't taken it
+                            off even once. Everyone asks me where it's from, and I just LOVE how nice it looks on me."
+                        </p>
+                    </div>
+                    <div class="testimonial-card">
+                        <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bm5.png"
+                            alt="Photo of Anuska Ananya">
+                        <h3>Anuska Ananya, 24</h3>
+                        <p>"BlueStone is my go-to place for jewellery. I love that I can wear their jewellery to work,
+                            dates, parties and brunches. It goes with everything and makes my outfits look stylish."</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== Find a Store Banner (Corrected with Single Image) ========== -->
+        <section class="store-locator-banner-v2">
+            <div class="container">
+                <a href="https://www.bluestone.com/store.html">
+                    <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/sb_v2.jpg"
+                        alt="A BlueStone store is closer than you think! Check your nearest store.">
+                </a>
+            </div>
+        </section>
+        <!-- ========== BlueStone Promise Section (Corrected with Working Icons) ========== -->
+        <section class="promise-section-v2">
+            <div class="container promise-container-v2">
+                <div class="promise-heading">
+                    <h2>BlueStone<br>Promise</h2>
+                    <span class="line"></span>
+                </div>
+                <div class="promise-grid-container">
+                    <div class="promise-grid-v2">
+                        <div class="promise-item-v2">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bp-1_v3.png"
+                                alt="250+ Stores Icon">
+                            <p>250+ STORES<br>80+ Cities Nationwide</p>
+                        </div>
+                        <div class="promise-item-v2">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bp-2.png"
+                                alt="100% Certified Icon">
+                            <p>100% Certified<br>Jewellery</p>
+                        </div>
+                        <div class="promise-item-v2">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bp-3.png"
+                                alt="Lifetime Exchange Icon">
+                            <p>Lifetime Exchange<br>& Buyback</p>
+                        </div>
+                        <div class="promise-item-v2">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bp-4.png"
+                                alt="30 Days Money Back Icon">
+                            <p>30 Days Money Back</p>
+                        </div>
+                        <div class="promise-item-v2">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bp-5.png"
+                                alt="100% Transparency Icon">
+                            <p>100% Transparency</p>
+                        </div>
+                        <div class="promise-item-v2">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bp-6.png"
+                                alt="Free Shipping Icon">
+                            <p>Free Shipping</p>
+                        </div>
+                        <div class="promise-item-v2">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bp-7.png"
+                                alt="No Compromise Icon">
+                            <p>No Compromise<br>On Ethics</p>
+                        </div>
+                        <div class="promise-item-v2">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/bp-8.png"
+                                alt="World of Designs Icon">
+                            <p>A world of designs</p>
+                        </div>
+                        <div class="promise-item-v2">
+                            <img src="https://kinclimg5.bluestone.com/f_webp/static/hp/d/vc-d.png"
+                                alt="Video Consultations Icon">
+                            <p>Personalised<br>Video Consultations</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ========== Brand Story Section ========== -->
+        <section class="brand-story-section">
+            <div class="container brand-story-container">
+                <div class="brand-story-column">
+                    <div class="story-icon">
+                        <img src="https://www.bluestone.com/images/new-asset/home-page-2022/omnichannel-icon.png"
+                            alt="">
+                    </div>
+                    <h3>BlueStone Jewellery Store - A Stellar Omnichannel Presence</h3>
+                    <p>BlueStone, founded in 2011 by Gaurav Singh Kushwaha in Bangalore, is one of India's largest
+                        e-commerce portal for fine jewellery. By seamlessly integrating online and physical retail
+                        channels, BlueStone has transformed the way consumers experience jewellery shopping.</p>
+                </div>
+                <div class="brand-story-column">
+                    <div class="story-icon">
+                        <img src="https://www.bluestone.com/images/new-asset/home-page-2022/shopping-exp-icon.png"
+                            alt="">
+                    </div>
+                    <h3>Redefining the Jewellery Shopping Experience</h3>
+                    <p>At BlueStone, we're dedicated to enhancing your jewellery shopping experience with unmatched
+                        convenience through a highly developed team that ensures every question about your products gets
+                        answered. We also have a Lifetime Exchange and Buyback Policy.</p>
+                </div>
+                <div class="brand-story-column">
+                    <div class="story-icon">
+                        <img src="https://www.bluestone.com/images/new-asset/home-page-2022/certified-jewellery-icon.png"
+                            alt="">
+                    </div>
+                    <h3>7000+ Certified Jewellery Designs</h3>
+                    <p>Our jewellery is certified by prestigious authorities such as BIS Hallmark, SGL, IGI, and GSI to
+                        ensure the authenticity and quality of every piece. Our extensive range of 7000+ contemporary
+                        creations tells a unique story, each inspired by different facets of life.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    <!-- ========== Footer (Accurate Version) ========== -->
+    <footer class="site-footer-v2">
+        <div class="footer-top">
+            <div class="container footer-top-container">
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>ABOUT US</h4>
+                        <ul>
+                            <li><a href="#">Who we are?</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Design Philosophy</a></li>
+                        </ul>
+                        <h4>CUSTOMER DELIGHT</h4>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">FAQ</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>POLICIES</h4>
+                        <ul>
+                            <li><a href="#">30-Day Returns</a></li>
+                            <li><a href="#">Lifetime Exchange & Buy Back</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Fraud Warning Disclaimer</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>SHOP WITH CONFIDENCE</h4>
+                        <ul>
+                            <li><a href="#">Why Buy From Us?</a></li>
+                            <li><a href="#">Our Certifications</a></li>
+                            <li><a href="#">Press Room</a></li>
+                            <li><a href="#">Testimonials</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>JEWELLERY GUIDE</h4>
+                        <ul>
+                            <li><a href="#">Buying and Price Guide</a></li>
+                            <li><a href="#">Certification Guide</a></li>
+                            <li><a href="#">Diamond and Solitaire Guide</a></li>
+                            <li><a href="#">Gemstone Guide</a></li>
+                            <li><a href="#">Gifting Guide</a></li>
+                            <li><a href="#">Jewellery Care Guide</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-app-download">
+                    <div class="footer-content">
+                        <h4>Download BlueStone App</h4>
+                        <p>Shining new app, made just for you! It's Free, Easy & Smart.</p>
+                        <div class="app-stores">
+                            <a
+                                href="https://play.google.com/store/apps/details?id=com.bluestone.android&referrer=website&utm_source%3Dwebsite_footer%26utm_medium%3Dwebsite%26utm_campaign%3Dwebsite"><img
+                                    src="images/playstore.png" alt="Get it on Google Play"></a>
+                            <a href="https://apps.apple.com/in/app/bluestone-jewellery-online/id1107631430"><img
+                                    src="images/appstore.png" alt="Download on the App Store"></a>
+                        </div>
+                    </div>
+                    <img class="app-promo-img"
+                        src="https://kinclimg5.bluestone.com/f_webp/static/resources/themes/bluestone/images/new/static/home/app-footer.v2.png"
+                        alt="BlueStone App on a phone">
+                </div>
+            </div>
+        </div>
+        <!-- Footer Bottom with Font Awesome Icons -->
+        <div class="footer-bottom">
+            <div class="container footer-bottom-container">
+                <div class="newsletter-signup">
+                    <form>
+                        <input type="email" placeholder="Enter email for our newsletter">
+                        <button type="submit">SUBSCRIBE</button>
+                    </form>
+                </div>
+                <div class="footer-social">
+                    <span>Follow us on</span>
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+                <div class="payment-methods">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

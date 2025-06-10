@@ -1,0 +1,1797 @@
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+/* General Body Styles */
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    background-color: #fdfdfd;
+    color: #555555;
+}
+
+/* Reusable Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+/* Header Styling */
+header {
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Top Bar */
+.top-bar {
+    background-color: #f5f5f5;
+    font-size: 12px;
+    padding: 8px 0;
+}
+
+.top-bar .container {
+    justify-content: flex-end;
+}
+
+.top-bar span {
+    margin: 0 8px;
+}
+
+/* Main Header */
+.main-header .container {
+    justify-content: space-between;
+    height: 80px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.search-bar {
+    display: flex;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    width: 400px;
+}
+
+.search-bar input {
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    width: 100%;
+    outline: none;
+}
+
+.search-bar button {
+    background-color: #d9232d;
+    /* Accent Red */
+    border: none;
+    color: white;
+    padding: 0 15px;
+    cursor: pointer;
+}
+
+.user-actions {
+    display: flex;
+}
+
+.user-actions .action-item {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #222222;
+    font-size: 14px;
+}
+
+/* Main Navigation */
+.main-nav {
+    background-color: #00437a;
+    /* Primary Blue */
+}
+
+.main-nav .container,
+.main-nav ul {
+    width: 100%;
+    padding: 0;
+}
+
+.main-nav ul {
+    list-style-type: none;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.main-nav ul li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.main-nav ul li a:hover {
+    background-color: #005a9e;
+}
+
+.main-nav .offers-link {
+    color: white;
+    /* Gold accent for offers */
+}
+
+/* Hero Section Styling */
+.hero-section {
+    position: relative;
+    /* Essential for positioning arrows and dots */
+    width: 100%;
+    margin-top: 20px;
+}
+
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    /* Adjust height as needed */
+    overflow: hidden;
+    /* Hides the slides that are not active */
+}
+
+.hero-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    /* Hide slides by default */
+    transition: opacity 0.5s ease-in-out;
+    /* Smooth fade effect */
+}
+
+.hero-slider .slide.active {
+    opacity: 1;
+    /* Show the active slide */
+}
+
+.hero-slider .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the area without distortion */
+}
+
+/* Slider Navigation Dots */
+.slider-nav {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.slider-nav .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.slider-nav .dot.active {
+    background-color: #00437a;
+    /* Primary Blue */
+}
+
+/* Slider Arrow Navigation */
+.slider-arrows {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+    pointer-events: none;
+    /* Allows clicks to pass through initially */
+}
+
+.slider-arrows .arrow {
+    pointer-events: all;
+    /* Make buttons clickable */
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    color: #333;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 50%;
+    margin: 0 20px;
+}
+
+.slider-arrows .arrow:hover {
+    background-color: white;
+}
+
+/* --- Video Hero Section Styling --- */
+
+.hero-section {
+    position: relative;
+    /* This is the anchor for the absolute positioning of its children */
+    width: 100%;
+    height: 500px;
+    /* Define a height for the hero section */
+    display: flex;
+    /* Using flexbox to easily center the text */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Hides any part of the video that might bleed out */
+}
+
+.video-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    /* Sits below the text */
+}
+
+.hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* This is the magic property. It makes the video cover the entire container, cropping it as needed without losing aspect ratio. */
+}
+
+.hero-text {
+    position: relative;
+    /* Can also be absolute */
+    z-index: 2;
+    /* Sits on top of the video container */
+    text-align: center;
+    color: #00437a;
+    /* Using Primary Blue from our style guide */
+}
+
+.hero-text h1 {
+    font-size: 4rem;
+    /* 64px */
+    font-weight: 700;
+    margin: 0;
+    /* Adding a subtle text shadow to make it pop */
+    text-shadow: 1px 1px 10px rgba(255, 255, 255, 0.5);
+    margin-top: 18rem;
+}
+
+/* --- Shop by Category Section --- */
+.shop-by-category {
+    padding: 40px 0;
+}
+
+.category-grid-container {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    /* Creates 8 columns */
+    gap: 20px;
+}
+
+.category-item {
+    text-decoration: none;
+    color: #555555;
+    text-align: center;
+    transition: transform 0.2s ease;
+}
+
+.category-item:hover {
+    transform: translateY(-4px);
+}
+
+.category-item img {
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    width: 100%;
+    max-width: 120px;
+    /* Control max size */
+    margin-bottom: 10px;
+    border: 1px solid #eee;
+}
+
+.category-item span {
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* --- Gold Mine Plan Banner --- */
+.promo-banner {
+    margin-top: 2rem;
+    background-color: #fff0f1;
+    /* A light pinkish hue */
+    padding: 20px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+/* .promo-container {
+} */
+.promo-text {
+    font-size: 16px;
+    color: #333;
+}
+
+/* New button style for the banner */
+.btn-enroll {
+    background-color: #d9534f;
+    /* A soft red */
+    color: black;
+    font-weight: 100;
+    opacity: 0.7;
+    border: 1px solid #d43f3a;
+    box-shadow: #d9534f;
+    padding: 0 0.5rem;
+    margin: 0 0.5rem;
+}
+
+.btn-enroll:hover {
+    background-color: #c9302c;
+    border-color: #ac2925;
+}
+
+/* --- Reusable Button Styles --- */
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    text-align: center;
+    padding: 12px 30px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #555;
+    border: 1px solid #ccc;
+}
+
+.btn-secondary:hover {
+    background-color: #f5f5f5;
+    border-color: #aaa;
+    color: #222;
+}
+
+/* --- Featured Collections Grid Styling --- */
+.collections-grid {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+/* This specifically targets the container in THIS section for a 3-column layout */
+.collections-grid .grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.collection-card {
+    border-radius: 8px;
+    overflow: hidden;
+    /* Ensures the image respects the border-radius */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.collection-card:hover {
+    transform: translateY(-5px);
+    /* Lifts the card up slightly on hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.collection-card img {
+    width: 100%;
+    display: block;
+    /* Removes any extra space below the image */
+}
+
+.collections-action {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* --- Category & Gift Section --- */
+.category-gift-section {
+    padding: 60px 0;
+    background-color: #fdfdfd;
+}
+
+.four-column-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    align-items: stretch;
+}
+
+.promo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    background-color: #fff;
+    padding: 30px 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #f0e4f4;
+}
+
+.promo-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.promo-card img {
+    margin-bottom: 20px;
+    height: 70px;
+}
+
+.promo-card h3 {
+    font-size: 18px;
+    color: #222;
+    margin: 0 0 10px 0;
+}
+
+.promo-card p {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.gift-card {
+    background-color: #ece0f4;
+    border-radius: 12px;
+    padding: 30px;
+    text-align: center;
+    background-image: url('https://www.bluestone.com/images/new-asset/category-breacrum/gifting-bg.png');
+    background-repeat: no-repeat;
+    background-position: top right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.gift-card h3 {
+    font-size: 24px;
+    color: #4a2c5a;
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.gift-card h3 strong {
+    font-weight: 700;
+    font-family: 'Times New Roman', serif;
+}
+
+.gift-options {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gift-option {
+    text-decoration: none;
+    color: #4a2c5a;
+}
+
+.gift-option img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.gift-option span {
+    font-weight: 700;
+}
+
+/* --- Campaign Video Section --- */
+.campaign-video-section {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+.campaign-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+.campaign-video-player video {
+    width: 100%;
+    border-radius: 8px;
+    border: 4px solid #d9232d;
+    /* Accent Red border */
+}
+
+.campaign-hashtag {
+    display: flex;
+    align-items: center;
+}
+
+.campaign-hashtag h2 {
+    font-family: 'Times New Roman', serif;
+    font-size: 48px;
+    font-weight: 400;
+    color: #d9232d;
+    /* Accent Red */
+    margin: 0;
+    padding-left: 20px;
+}
+
+.hashtag-line {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #d9232d;
+    /* Accent Red */
+}
+
+/* --- Testimonials Section --- */
+.testimonials-section {
+    padding: 60px 0;
+    background-color: white;
+    /* Light lavender background */
+    overflow: hidden;
+}
+
+.testimonials-container {
+    flex-direction: column;
+}
+
+.testimonials-section h2 {
+    font-size: 32px;
+    color: #222;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 40px;
+}
+
+.testimonial-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+}
+
+.testimonial-card {
+    background-color: #f9f2f7;
+    ;
+    padding: 20px;
+    padding-bottom: 30px;
+    /* More space at bottom */
+    text-align: center;
+    transform: rotate(-3deg);
+    /* Slight rotation */
+    transition: transform 0.3s ease;
+    border-radius: 1rem;
+}
+
+.testimonial-card:nth-child(even) {
+    transform: rotate(3deg);
+    /* Rotate other direction */
+}
+
+.testimonial-card:hover {
+    transform: rotate(0) scale(1.05);
+    z-index: 10;
+}
+
+.testimonial-card img {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.testimonial-card h3 {
+    margin: 0 0 10px 0;
+    color: #333;
+    text-align: left;
+}
+
+.testimonial-card p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.7;
+    text-align: left;
+}
+
+
+/* --- Footer Styling (for your custom HTML) --- */
+
+.site-footer-v2 {
+    background-color: #00437a;
+    /* Primary Blue */
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+/* --- Top Section --- */
+.footer-top {
+    padding: 60px 15px;
+    border-bottom: 1px solid #005a9e;
+    /* Slightly lighter blue for separation */
+}
+
+.footer-top-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.footer-links {
+    flex: 3;
+    /* Takes up 3/4 of the space */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+}
+
+.footer-column h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 30px 0;
+}
+
+.footer-column ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 2;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #fff;
+}
+
+.footer-app-download {
+    flex: 1;
+    /* Takes up 1/4 of the space */
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-app-download h4 {
+    font-size: 16px;
+    margin-top: 0;
+}
+
+.footer-app-download p {
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.app-stores a img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.app-promo-img {
+    max-width: 150px;
+    /* Control the size of the phone image */
+    align-self: flex-end;
+    /* Pushes phone image to the bottom of the container */
+}
+
+
+/* --- Bottom Section --- */
+.footer-bottom {
+    background-color: #00335e;
+    /* Darker Blue */
+    padding: 30px 15px;
+}
+
+.footer-bottom-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.newsletter-signup form {
+    display: flex;
+}
+
+.newsletter-signup input {
+    background-color: white;
+    border: none;
+    padding: 12px;
+    width: 250px;
+    font-size: 14px;
+    border-radius: 4px 0 0 4px;
+}
+
+.newsletter-signup input:focus {
+    outline: none;
+}
+
+.newsletter-signup button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 0 4px 4px 0;
+}
+
+.footer-social,
+.payment-methods {
+    display: flex;
+    align-items: center;
+}
+
+.footer-social span {
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.footer-social a,
+.payment-methods a {
+    margin: 0 5px;
+    display: inline-block;
+}
+
+.footer-social img,
+.payment-methods img {
+    height: 24px;
+    vertical-align: middle;
+}
+
+.payment-methods img {
+    height: 24px;
+    margin-left: 10px;
+}
+
+/* --- Find a Store Banner (Corrected v2) --- */
+.store-locator-banner-v2 {
+    padding: 50px 0;
+    background-color: #f8f8f8;
+    /* A light background color to frame the image */
+}
+
+.store-locator-banner-v2 img {
+    width: 100%;
+    /* Makes the image responsive to the container */
+    display: block;
+    /* Removes any extra space below the image */
+    border-radius: 8px;
+    /* Optional: adds slightly rounded corners */
+}
+
+/* --- Brand Story Section --- */
+.brand-story-section {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+}
+
+.brand-story-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 50px;
+    position: relative;
+}
+
+.brand-story-column {
+    text-align: center;
+    background: #fff;
+    padding: 40px 30px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+}
+
+.story-icon {
+    margin-bottom: 20px;
+}
+
+.brand-story-column h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.brand-story-column p {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* --- BlueStone Promise Section (Accurate Version) --- */
+.promise-section-v2 {
+    padding: 80px 0;
+}
+
+.promise-container-v2 {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.promise-heading h2 {
+    font-size: 48px;
+    font-weight: 300;
+    color: #222;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.promise-heading .line {
+    display: block;
+    height: 2px;
+    width: 100px;
+    background: #b7956b;
+    margin-top: 20px;
+}
+
+.promise-grid-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.promise-grid-v2 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.promise-item-v2 {
+    text-align: center;
+}
+
+.promise-item-v2 img {
+    height: 60px;
+    margin-bottom: 10px;
+}
+
+.promise-item-v2 p {
+    margin: 0;
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.promise-item-v2 p strong {
+    color: #222;
+}
+
+
+/* --- CSS Updates for Font Awesome Icons --- */
+
+/* 1. Header Search Button Icon */
+.search-btn i {
+    font-size: 18px;
+}
+
+/* 2. Header User Action Icons */
+.user-actions .action-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.user-actions .action-item i {
+    font-size: 22px;
+}
+
+/* 3. Footer Social Icons */
+.footer-social i {
+    font-size: 22px;
+    color: #ccc;
+    transition: color 0.3s;
+    padding: 0 8px;
+}
+
+.footer-social a:hover i {
+    color: #fff;
+}
+
+/* 4. Footer Payment Icons */
+.payment-methods i {
+    font-size: 32px;
+    /* Font icons scale with font-size */
+    color: #ccc;
+    margin-left: 10px;
+}
+
+/* --- FINAL Corrected Dropdown & Mega Menu Styling --- */
+
+/* Add a down arrow to the nav links */
+.main-nav ul li a i {
+    font-size: 12px;
+    margin-left: 5px;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Rotate the arrow when the menu is active */
+.nav-item.active>a>i {
+    transform: rotate(180deg);
+}
+
+/* This is the key parent container for positioning */
+.main-nav {
+    position: relative;
+}
+
+/* Generic styles for ALL dropdowns (hidden by default) */
+.mega-menu,
+.dropdown-simple {
+    /* Key Fix: Take the menu out of the page's normal flow */
+    position: absolute;
+
+    /* Key Fix: Position it relative to the .main-nav bar */
+    top: 100%;
+    /* Start exactly at the bottom of the blue nav bar */
+    left: 0;
+    width: 100%;
+    /* Span the full width of the viewport */
+
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    /* Ensure it's on top of all other content */
+
+    /* Hide by default and set up for animation */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    /* Start slightly lower for a smooth animation */
+    transition: opacity 0.8s ease, transform 0.5s ease;
+    border-top: 1px solid #ddd;
+}
+
+/* This is the visible state when JS adds the 'active' class on hover */
+.nav-item.active .mega-menu,
+.nav-item.active .dropdown-simple {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* --- Specific Styling for MEGA MENUS --- */
+.mega-menu .container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    padding: 30px 15px;
+    align-items: flex-start;
+}
+
+.mega-menu-column h4 {
+    color: #00437a;
+    font-size: 14px;
+    margin: 0 0 15px 0;
+    text-transform: uppercase;
+}
+
+.mega-menu-column a {
+    color: #555 !important;
+    font-weight: 400;
+    padding: 8px 0;
+}
+
+.mega-menu-column a:hover {
+    background-color: transparent !important;
+    color: #000 !important;
+}
+
+.mega-menu-image {
+    text-align: center;
+}
+
+
+/* --- Specific Styling for SIMPLE DROPDOWNS --- */
+.dropdown-simple {
+    /* Key Fix: Override full-width and position it under its parent */
+    width: auto;
+    min-width: 180px;
+    padding: 10px 0;
+    border-radius: 0 0 4px 4px;
+    left: auto;
+    /* Let the browser determine position from the parent */
+}
+
+.dropdown-simple a {
+    color: #333 !important;
+    font-weight: 400;
+    padding: 10px 20px;
+}
+
+.dropdown-simple a:hover {
+    background-color: #f5f5f5 !important;
+}
+
+/* --- Mobile Responsive & Hamburger Menu CSS --- */
+
+/* Hide mobile-specific elements by default on desktop */
+.mobile-menu-toggle,
+.mobile-nav-header,
+.mobile-menu-close {
+    display: none;
+}
+
+/* ================================================= */
+/* --- FINAL Mobile Responsive & Hamburger CSS --- */
+/* ================================================= */
+
+/* Hide mobile-only elements on desktop by default */
+.mobile-menu-toggle,
+.mobile-nav-header {
+    display: none;
+}
+
+/* This is the breakpoint for mobile devices */
+@media (max-width: 1024px) {
+
+    /* --- Header Adjustments --- */
+    .main-header .container {
+        justify-content: space-between;
+        /* Ensure logo and icon are spaced out */
+    }
+
+    /* Hide the desktop elements */
+    .top-bar,
+    .main-header .search-bar,
+    .main-header .user-actions {
+        display: none;
+    }
+
+    /* Key Fix: Show the hamburger toggle button */
+    .mobile-menu-toggle {
+        display: block;
+        /* This makes the icon appear */
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #00437a;
+        /* BlueStone Blue */
+        cursor: pointer;
+    }
+
+    /* --- Navigation Panel Styling --- */
+    .main-nav {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 320px;
+        height: 100vh;
+        background-color: #fff;
+        box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+        z-index: 2000;
+        overflow-y: auto;
+
+        /* Start off-screen */
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+    }
+
+    /* This class is toggled by JS to show the menu */
+    .main-nav.is-open {
+        transform: translateX(0);
+    }
+
+    .nav-container {
+        padding: 0 !important;
+    }
+
+    /* Show the header inside the mobile menu */
+    .mobile-nav-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        background-color: #f5f5f5;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .mobile-nav-header span {
+        font-weight: 700;
+        color: #333;
+    }
+
+    .mobile-menu-close {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #555;
+        cursor: pointer;
+    }
+
+    /* --- Mobile Menu Link Styling --- */
+    .main-nav ul {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+    }
+
+    .main-nav ul li a {
+        color: #333;
+        padding: 15px 20px;
+        width: 100%;
+        border-bottom: 1px solid #eee;
+        box-sizing: border-box;
+        /* Important for correct width */
+    }
+
+    .main-nav ul li a:hover,
+    .nav-item.active>a {
+        background-color: #f5f5f5;
+    }
+
+    /* --- Mobile Dropdown Styling --- */
+    .mega-menu,
+    .dropdown-simple {
+        display: none;
+        position: static;
+        /* Put sub-menus back in the flow */
+        width: 100%;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        padding-left: 20px;
+        /* Indent sub-menus */
+        border-top: none;
+        background-color: #fafafa;
+    }
+
+    .nav-item.active .mega-menu,
+    .nav-item.active .dropdown-simple {
+        display: block;
+        /* Show on click */
+    }
+
+    .mega-menu .container {
+        grid-template-columns: 1fr;
+        /* Stack columns vertically */
+        padding: 10px 0;
+        gap: 0;
+    }
+
+    .mega-menu-column h4 {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .mega-menu-image {
+        display: none;
+    }
+}
+
+
+/* --- Product Listing Page (PLP) Styling --- */
+.plp-main {
+    padding: 40px 0;
+}
+
+.plp-container {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    /* Sidebar and main content */
+    gap: 40px;
+    align-items: flex-start;
+}
+
+/* Filter Sidebar */
+.plp-filters {
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 4px;
+}
+
+.plp-filters h3 {
+    margin-top: 0;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+}
+
+.filter-group {
+    margin-bottom: 25px;
+}
+
+.filter-group h4 {
+    margin-bottom: 10px;
+}
+
+.filter-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Product Grid Section */
+.plp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.plp-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.plp-sort select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+/* --- FINAL Corrected Product Card Styling --- */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    /* Stacks the image container and details vertically */
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fff;
+    overflow: hidden;
+    /* Important for containing the zoom effect */
+    transition: box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* This is the new container that enforces the shape */
+.product-image-container {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    /* Key Fix: Creates a perfect square for the image */
+    overflow: hidden;
+    /* Hides parts of image that don't fit the square */
+}
+
+/* This styles the image itself */
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Key Fix: Fills the square without stretching */
+    transition: transform 0.3s ease;
+}
+
+/* Add a nice zoom effect on hover */
+.product-card:hover .product-image-container img {
+    transform: scale(1.05);
+}
+
+/* This container holds the text content */
+.product-card-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.product-card-details h3 {
+    font-size: 16px;
+    font-weight: 500;
+    margin: 0 0 10px 0;
+}
+
+.product-card-details .price {
+    font-size: 18px;
+    font-weight: 700;
+    color: #00437a;
+    margin: 0;
+}
+
+/* --- FINAL Corrected PDP Gallery Styling --- */
+.pdp-main {
+    padding: 40px 0;
+    background-color: #fff;
+}
+
+.pdp-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: flex-start;
+    /* Aligns columns to the top */
+}
+
+/* Gallery Column */
+.pdp-gallery {
+    position: sticky;
+    top: 20px;
+}
+
+/* Main Image Container */
+.main-image-container {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    /* Key Fix: Set a max size and aspect ratio for the container */
+    width: 100%;
+    height: 500px;
+    /* Give it a fixed height */
+    max-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The Image Itself */
+#main-product-image {
+    max-width: 100%;
+    max-height: 100%;
+    /* Key Fix: Ensure image scales down without distortion */
+    object-fit: contain;
+}
+
+.thumbnail-container {
+    display: flex;
+    gap: 10px;
+}
+
+/* Thumbnail Container */
+.thumbnail-container {
+    display: flex;
+    gap: 10px;
+}
+
+.thumbnail-container img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    /* Thumbnails can be cropped to fit */
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.thumbnail-container img.active,
+.thumbnail-container img:hover {
+    border-color: #00437a;
+}
+
+/* Product Details */
+#product-name {
+    margin-top: 0;
+    font-size: 28px;
+    font-weight: 700;
+}
+
+#product-id {
+    color: #888;
+    font-size: 14px;
+    margin-top: -15px;
+}
+
+.price-section .current-price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #00437a;
+}
+
+.customization-placeholder {
+    margin: 30px 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.pdp-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+.pdp-actions .btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 16px;
+}
+
+.product-description h4 {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.product-description p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* --- Cart Counter Badge --- */
+.action-item {
+    position: relative;
+}
+
+.cart-counter {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #d9232d;
+    /* Accent Red */
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* --- Shopping Cart Page Styling --- */
+.cart-page-main {
+    padding: 40px 0;
+    background-color: #f9f9f9;
+}
+
+#cart-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-page-main h1 {
+    margin-bottom: 30px;
+}
+
+.cart-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* Items take 2/3, summary takes 1/3 */
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.cart-items {
+    background: #fff;
+    padding: 20px;
+    border-radius: 4px;
+}
+
+.cart-item {
+    display: flex;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.cart-item-image img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.cart-item-details {
+    flex-grow: 1;
+}
+
+.cart-item-details h3 {
+    margin: 0 0 10px 0;
+    font-size: 16px;
+}
+
+.cart-item-details .item-price {
+    font-size: 18px;
+    color: #00437a;
+    font-weight: 700;
+}
+
+.cart-item-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.quantity-selector input {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #d9232d;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Order Summary */
+.order-summary {
+    background: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    position: sticky;
+    top: 20px;
+}
+
+.order-summary h3 {
+    margin-top: 0;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.summary-row.total {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+}
+
+/* --- Wishlist Icon Styling --- */
+
+/* Wishlist icon on the Product Card (PLP) */
+.product-card {
+    position: relative;
+    /* Needed to position the icon */
+}
+
+.wishlist-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 22px;
+    color: #aaa;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.wishlist-icon:hover {
+    color: #d9232d;
+    /* Red on hover */
+}
+
+.wishlist-icon.active {
+    color: #d9232d;
+    /* Red when active */
+}
+
+/* Change the PDP button icon when active */
+.add-to-wishlist-btn.active i {
+    font-weight: 900;
+    /* Changes fa-regular to fa-solid */
+    color: #d9232d;
+}
+
+
+/* ======================================= */
+/* --- WISHLIST PAGE STYLES --- */
+/* ======================================= */
+
+.wishlist-main {
+    padding: 50px 0;
+    background-color: #f9f9f9;
+}
+
+.wishlist-main .container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.wishlist-main h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+/* We reuse .product-grid and .product-card from the PLP, so no new styles are needed there! */
+
+/* Empty Wishlist Styling */
+.empty-wishlist-container {
+    width: 100%;
+    text-align: center;
+    padding: 80px 40px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+}
+.empty-wishlist-icon::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    content: "\f004"; /* Font Awesome heart icon */
+    font-size: 60px;
+    color: #e0e0e0;
+    display: block;
+    margin-bottom: 30px;
+}
+.empty-wishlist-container h2 {
+    font-size: 24px;
+    color: #333;
+}
+.empty-wishlist-container p {
+    color: #666;
+    margin-bottom: 30px;
+    max-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
+}
+
+
+/* ======================================= */
+/* --- STYLE YOUR JEWEL WIDGET (PDP) --- */
+/* ======================================= */
+
+.style-jewel-container {
+    margin: 40px 0;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.style-jewel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+}
+.style-jewel-header h3 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+/* Toggle Switch Styling */
+.toggle-switch {
+    display: flex;
+    background-color: #e9ecef;
+    border-radius: 20px;
+    padding: 4px;
+}
+.toggle-btn {
+    border: none;
+    background-color: transparent;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    color: #555;
+    transition: all 0.3s ease;
+}
+.toggle-btn.active {
+    background-color: #fff;
+    color: #00437a; /* Primary Blue */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Panel Styling */
+.style-jewel-panel {
+    padding: 25px;
+    display: none; /* Hidden by default */
+}
+.style-jewel-panel.active {
+    display: block; /* Shown when active */
+}
+
+/* Form Group Styling (for Customise mode) */
+.custom-option-group {
+    margin-bottom: 20px;
+}
+.custom-option-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #333;
+}
+.custom-option-group select {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+}
+
+/* AI Panel Specifics */
+#ai-design-panel p {
+    margin-top: 0;
+    color: #555;
+}
+#ai-design-panel textarea {
+    width: 100%;
+    min-height: 80px;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-bottom: 15px;
+    box-sizing: border-box; /* Important for width */
+}
+.generate-ai-btn {
+    width: 100%;
+}
+
+/* --- Cart Customization Details --- */
+.cart-custom-details {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    font-size: 13px;
+    color: #666;
+}
+.cart-custom-details li {
+    margin-bottom: 4px;
+}
+.cart-custom-details li span {
+    font-weight: 700;
+    color: #333;
+}
+.cart-item-image-link {
+    display: block; /* Makes the image clickable */
+}
+.cart-item-details h3 a {
+    text-decoration: none;
+    color: inherit;
+}
