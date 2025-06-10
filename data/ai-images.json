@@ -1,0 +1,30 @@
+[
+    {
+      "src": "images/ai/platinum-ring-solitaire.jpg",
+      "tags": ["platinum", "ring", "solitaire", "diamond", "engagement"]
+    },
+    {
+      "src": "images/ai/gold-necklace-heavy.jpg",
+      "tags": ["gold", "necklace", "heavy", "bridal", "traditional"]
+    },
+    {
+      "src": "images/ai/rose-gold-earrings-emerald.jpg",
+      "tags": ["rose gold", "earrings", "emerald", "dangle", "modern"]
+    },
+    {
+      "src": "images/ai/gold-ring-ruby.jpg",
+      "tags": ["gold", "ring", "ruby", "cocktail", "bold"]
+    },
+    {
+      "src": "images/ai/silver-bracelet-minimalist.jpg",
+      "tags": ["silver", "bracelet", "minimalist", "modern", "chain"]
+    },
+    {
+      "src": "images/ai/diamond-studs-white-gold.jpg",
+      "tags": ["diamond", "studs", "earrings", "white gold", "classic"]
+    },
+    {
+      "src": "images/ai/default-pendant.jpg",
+      "tags": ["default"]
+    }
+  ]
