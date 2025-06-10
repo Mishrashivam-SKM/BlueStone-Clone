@@ -1843,3 +1843,39 @@ header {
     flex-direction: column;
     height: 100%;
 }
+
+/* ======================================= */
+/* --- AI DESIGN PANEL STYLING (PDP) --- */
+/* ======================================= */
+
+#ai-result-container {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px dashed #ccc;
+}
+
+#ai-result-container h4 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.ai-result-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.send-for-approval-btn {
+    width: 100%;
+}
+
+.feedback-success {
+    font-weight: 700;
+    color: #28a745; /* A success green color */
+    text-align: center;
+    padding: 15px;
+    background-color: #e9f7eb;
+    border-radius: 4px;
+}
