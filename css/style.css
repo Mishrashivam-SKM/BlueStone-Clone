@@ -1795,3 +1795,30 @@ header {
     text-decoration: none;
     color: inherit;
 }
+/* --- Cart Customization Details --- */
+.cart-custom-details {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 5px 0;
+    font-size: 13px;
+    color: #666;
+}
+.cart-custom-details li {
+    margin-bottom: 4px;
+}
+.cart-custom-details li span {
+    font-weight: 700;
+    color: #333;
+}
+/* Makes the product image in the cart a clickable link */
+.cart-item-image-link {
+    display: block;
+}
+/* Makes the product title in the cart a clickable link */
+.cart-item-details h3 a {
+    text-decoration: none;
+    color: inherit; /* Inherits the h3 color */
+}
+.cart-item-details h3 a:hover {
+    text-decoration: underline;
+}

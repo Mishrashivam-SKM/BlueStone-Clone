@@ -1,127 +1,130 @@
 // File: /js/cart-page.js
-// Replace the entire file content with this.
+// This file controls ONLY the display and interactions on the cart.html page.
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Select the main containers from the *new* HTML structure
-    const layoutContainer = document.querySelector('.cart-page-layout');
-    const itemsContainer = document.getElementById('cart-items-container');
-    const summaryContainer = document.getElementById('order-summary-container');
-    const emptyCartMessage = document.getElementById('empty-cart-message');
+document.addEventListener('DOMContentLoaded', async function() {
+    // --- 1. GET HTML ELEMENTS ---
+    const cartItemsContainer = document.getElementById('cart-items-container');
+    const subtotalEl = document.getElementById('cart-subtotal');
+    const totalEl = document.getElementById('cart-total');
+    const cartLayout = document.querySelector('.cart-layout');
+    const emptyCartMessageContainer = document.querySelector('.cart-page-main .container');
 
-    // Helper function to format currency consistently
-    const formatCurrency = (amount) => `₹${amount.toLocaleString('en-IN')}`;
+    // --- 2. FETCH ALL PRODUCT DATA (once) ---
+    let allProducts = [];
+    try {
+        const response = await fetch('data/products.json');
+        if (!response.ok) throw new Error('Network response was not ok');
+        allProducts = await response.json();
+    } catch (error) {
+        console.error("Fatal Error: Could not load product data.", error);
+        cartItemsContainer.innerHTML = `<p style="color:red;">Error loading essential product data. Cart cannot be displayed.</p>`;
+        return;
+    }
 
-    async function renderCart() {
-        // Get cart data from the global function in cart.js
-        const cart = getCart();
+    // --- 3. RENDER FUNCTION ---
+    function renderCart() {
+        const cart = getCart(); // Get current cart from cart.js
 
         // --- Handle Empty Cart ---
         if (cart.length === 0) {
-            if(layoutContainer) layoutContainer.style.display = 'none';
-            if(emptyCartMessage) emptyCartMessage.style.display = 'block';
+            cartLayout.style.display = 'none'; // Hide the main layout
+            if (!document.getElementById('empty-cart-msg')) {
+                const emptyMsg = document.createElement('div');
+                emptyMsg.id = 'empty-cart-msg';
+                emptyMsg.style.textAlign = 'center';
+                emptyMsg.innerHTML = `
+                    <h2>Your Shopping Cart is Empty</h2>
+                    <p>Looks like you haven't added anything to your cart yet.</p>
+                    <a href="product-listing.html" class="btn" style="background-color: #00437a; color: white;">Continue Shopping</a>
+                `;
+                emptyCartMessageContainer.appendChild(emptyMsg);
+            }
+            subtotalEl.textContent = '₹0';
+            totalEl.textContent = '₹0';
             return;
         }
 
         // --- Handle Non-Empty Cart ---
-        if(layoutContainer) layoutContainer.style.display = 'grid';
-        if(emptyCartMessage) emptyCartMessage.style.display = 'none';
+        cartLayout.style.display = 'grid'; // Ensure layout is visible
+        const existingEmptyMsg = document.getElementById('empty-cart-msg');
+        if (existingEmptyMsg) {
+            existingEmptyMsg.remove();
+        }
 
-        // Fetch all product data to get names and images
-        const productsResponse = await fetch('data/products.json');
-        const allProducts = await productsResponse.json();
+        cartItemsContainer.innerHTML = ''; // Clear previous items
+        let currentSubtotal = 0;
 
-        let subtotal = 0;
-        itemsContainer.innerHTML = ''; // Clear previous items before re-rendering
-
-        // Loop through each item in the cart array
-        for (const cartItem of cart) {
-            // Find the base product details using the item's ID
+        cart.forEach(cartItem => {
             const product = allProducts.find(p => p.id === cartItem.id);
-            if (!product) continue; // Skip if the product doesn't exist in our data file
-
-            // UPGRADED: Use the stored finalPrice for the subtotal calculation
-            subtotal += cartItem.finalPrice * cartItem.quantity;
-
-            // NEW: Generate a description list from the item's customization object
-            let customDesc = '';
-            if (cartItem.customizations) {
-                customDesc = `
-                    <ul class="cart-custom-details">
-                        <li>Metal: <span>${cartItem.customizations.metal}</span></li>
-                        <li>Purity: <span>${cartItem.customizations.purity}</span></li>
-                        <li>Stone: <span>${cartItem.customizations.stone}</span></li>
-                    </ul>
-                `;
+            if (!product) {
+                console.warn(`Could not find product with ID: ${cartItem.id} in products.json. Skipping item.`);
+                return;
             }
 
-            // NEW: Create a dynamic URL to link back to the PDP with the exact customizations
-            const pdpUrl = `product-detail.html?id=${cartItem.id}&metal=${cartItem.customizations.metal}&purity=${cartItem.customizations.purity}&stone=${cartItem.customizations.stone}`;
+            // Use the price stored IN THE CART ITEM, which includes customization costs.
+            const itemTotalPrice = cartItem.finalPrice * cartItem.quantity;
+            currentSubtotal += itemTotalPrice;
 
-            // UPGRADED: The new, more detailed HTML for each cart item
-            itemsContainer.innerHTML += `
-                <div class="cart-item-card" data-cart-item-id="${cartItem.cartItemId}">
-                    <a href="${pdpUrl}" class="cart-item-image-link">
+            // Generate HTML for customization details
+            const customDetailsHtml = `
+                <ul class="cart-custom-details">
+                    <li>Metal: <span>${cartItem.customizations.metal}</span></li>
+                    <li>Purity: <span>${cartItem.customizations.purity}</span></li>
+                    <li>Stone: <span>${cartItem.customizations.stone}</span></li>
+                </ul>`;
+
+            const cartItemEl = document.createElement('div');
+            cartItemEl.classList.add('cart-item');
+            // Use the unique cartItemId in the data attributes for targeting
+            cartItemEl.innerHTML = `
+                <div class="cart-item-image">
+                    <a href="product-detail.html?id=${product.id}" class="cart-item-image-link">
                         <img src="${product.images[0]}" alt="${product.name}">
                     </a>
-                    <div class="cart-item-details">
-                        <h3><a href="${pdpUrl}">${product.name}</a></h3>
-                        ${customDesc}
-                        <p class="price">${formatCurrency(cartItem.finalPrice)}</p>
+                </div>
+                <div class="cart-item-details">
+                    <h3><a href="product-detail.html?id=${product.id}">${product.name}</a></h3>
+                    <p class="item-price">₹${cartItem.finalPrice.toLocaleString('en-IN')}</p>
+                    ${customDetailsHtml}
+                </div>
+                <div class="cart-item-actions">
+                    <div class="quantity-selector">
+                        <label for="qty-${cartItem.cartItemId}">Qty:</label>
+                        <input type="number" id="qty-${cartItem.cartItemId}" value="${cartItem.quantity}" min="1" data-cart-item-id="${cartItem.cartItemId}" class="quantity-input">
                     </div>
-                    <div class="cart-item-actions">
-                        <label>Qty:</label>
-                        <input type="number" class="quantity-input" value="${cartItem.quantity}" min="1">
-                        <button class="remove-btn">
-                            <i class="fa-regular fa-trash-can"></i> Remove
-                        </button>
-                    </div>
+                    <button class="remove-item-btn" data-cart-item-id="${cartItem.cartItemId}">
+                        <i class="fa-regular fa-trash-can"></i> Remove
+                    </button>
                 </div>
             `;
-        }
-        
-        // UPGRADED: Render the entire order summary block dynamically
-        summaryContainer.innerHTML = `
-            <h2>Order Summary</h2>
-            <div class="summary-row">
-                <span>Subtotal</span>
-                <span>${formatCurrency(subtotal)}</span>
-            </div>
-            <div class="summary-row">
-                <span>Shipping</span>
-                <span>FREE</span>
-            </div>
-            <div class="summary-row total">
-                <span>Total</span>
-                <span>${formatCurrency(subtotal)}</span>
-            </div>
-            <button class="btn btn-primary checkout-btn" ${subtotal === 0 ? 'disabled' : ''}>
-                Proceed to Checkout
-            </button>
-        `;
+            cartItemsContainer.appendChild(cartItemEl);
+        });
+
+        // Update totals
+        subtotalEl.textContent = `₹${currentSubtotal.toLocaleString('en-IN')}`;
+        totalEl.textContent = `₹${currentSubtotal.toLocaleString('en-IN')}`;
     }
 
-    // --- UPGRADED Event Listeners using the unique cartItemId ---
-    itemsContainer.addEventListener('click', (event) => {
-        const removeButton = event.target.closest('.remove-btn');
+    // --- 4. EVENT LISTENERS using Event Delegation ---
+    cartItemsContainer.addEventListener('click', (event) => {
+        const removeButton = event.target.closest('.remove-item-btn');
         if (removeButton) {
-            const cartItemId = removeButton.closest('.cart-item-card').dataset.cartItemId;
-            // This function needs to be updated in cart.js
-            removeFromCart(cartItemId);
-            renderCart(); // Re-render the entire cart view
+            const cartItemId = removeButton.dataset.cartItemId;
+            removeFromCart(cartItemId); // Call function from cart.js
+            renderCart(); // Re-render the cart view
         }
     });
-
-    itemsContainer.addEventListener('change', (event) => {
+    
+    cartItemsContainer.addEventListener('change', (event) => {
         const quantityInput = event.target;
         if (quantityInput.classList.contains('quantity-input')) {
-            const cartItemId = quantityInput.closest('.cart-item-card').dataset.cartItemId;
+            const cartItemId = quantityInput.dataset.cartItemId;
             const newQuantity = parseInt(quantityInput.value, 10);
-            // This function also needs to be updated in cart.js
-            updateCartQuantity(cartItemId, newQuantity);
-            renderCart(); // Re-render the entire cart view
+            updateCartQuantity(cartItemId, newQuantity, 10); // Call function from cart.js
+            renderCart(); // Re-render the cart view
         }
     });
 
-    // Initial render when the page loads
+    // --- 5. INITIAL RENDER ---
     renderCart();
 });

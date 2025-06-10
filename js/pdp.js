@@ -104,21 +104,30 @@ document.addEventListener('DOMContentLoaded', function() {
     puritySelect.addEventListener('change', calculateAndDisplayPrice);
     stoneSelect.addEventListener('change', calculateAndDisplayPrice);
 
-    addToCartBtn.addEventListener('click', () => {
-        const itemForCart = {
-            id: productId,
-            quantity: 1,
-            customizations: {
-                metal: metalSelect.value,
-                purity: puritySelect.value,
-                stone: stoneSelect.value
-            },
-            finalPrice: parseFloat(priceEl.textContent.replace(/[^0-9.]/g, ''))
-        };
-        addToCart(itemForCart); // Call global function from cart.js
-        addToCartBtn.textContent = 'Added!';
-        setTimeout(() => { addToCartBtn.textContent = 'Add to Cart'; }, 2000);
-    });
+   // ... (keep all the code at the top of the file) ...
+
+   addToCartBtn.addEventListener('click', () => {
+    // Create the full object with all the details
+    const itemForCart = {
+        id: productId,
+        quantity: 1, // Always add one at a time from PDP
+        customizations: {
+            metal: metalSelect.value,
+            purity: puritySelect.value,
+            stone: stoneSelect.value
+        },
+        // Get the FINAL calculated price from the display
+        finalPrice: parseFloat(priceEl.textContent.replace(/[^0-9.]/g, ''))
+    };
+
+    addToCart(itemForCart); // Call the upgraded global function from cart.js
+    
+    // Give user feedback
+    addToCartBtn.textContent = 'Added!';
+    setTimeout(() => { addToCartBtn.textContent = 'Add to Cart'; }, 2000);
+});
+
+// ... (keep all the code at the bottom of the file) ...
 
     function updateWishlistButtonState(productId) {
         if (isProductInWishlist(productId)) {
