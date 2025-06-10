@@ -1822,3 +1822,24 @@ header {
 .cart-item-details h3 a:hover {
     text-decoration: underline;
 }
+
+/* ================================================== */
+/* --- WISHLIST & PLP CARD CUSTOMIZATION STYLING --- */
+/* ================================================== */
+
+/* This targets the customization list ONLY when it's inside a product card */
+.product-card-details .cart-custom-details {
+    text-align: left; /* Aligns the text to the left for readability */
+    margin: 15px 0 5px 0; /* Adjusts top/bottom spacing inside the card */
+    padding: 0 15px;      /* Gives it some horizontal breathing room */
+    font-size: 12px;      /* Makes the text slightly smaller than the main details */
+}
+
+/* We also need to add a wrapper for the link to work correctly with the icon */
+.product-link-wrapper {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}

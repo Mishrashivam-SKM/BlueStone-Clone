@@ -1,30 +1,38 @@
-// --- Wait for the entire HTML document to be loaded before running the script ---
+// File: /js/main.js
 document.addEventListener('DOMContentLoaded', function() {
 
-    // --- Mega Menu Functionality ---
-    const navItemsWithDropdown = document.querySelectorAll('.has-dropdown');
+    // --- Mega Menu & Dropdown Functionality ---
+    const navItemsWithDropdown = document.querySelectorAll('.main-nav .has-dropdown');
 
     navItemsWithDropdown.forEach(item => {
-        // We use mouseenter and mouseleave to avoid event bubbling issues
+        // Desktop Hover Logic
         item.addEventListener('mouseenter', () => {
-            // The 'active' class is a more robust way to control state with JS
-            item.classList.add('active'); 
+            if (window.innerWidth > 1024) { // Only run on desktop
+                item.classList.add('active');
+            }
+        });
+        item.addEventListener('mouseleave', () => {
+            if (window.innerWidth > 1024) { // Only run on desktop
+                item.classList.remove('active');
+            }
         });
 
-        item.addEventListener('mouseleave', () => {
-            item.classList.remove('active');
+        // Mobile Click Logic
+        const link = item.querySelector('a');
+        link.addEventListener('click', function(event) {
+            if (window.innerWidth <= 1024) { // Only run on mobile
+                event.preventDefault(); // Prevent link navigation
+                // Close other open submenus
+                navItemsWithDropdown.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle the current one
+                item.classList.toggle('active');
+            }
         });
     });
-
-    // You can add more JavaScript functionality here in the future
-
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-
-    // --- Mega Menu Functionality (from before) ---
-    // ... your existing code for desktop hover ...
-
 
     // --- Mobile Menu Toggle Functionality ---
     const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
@@ -43,57 +51,32 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // --- Mobile Sub-menu Functionality ---
-    // On mobile, we want to toggle dropdowns on click, not hover.
-    const navLinks = document.querySelectorAll('.main-nav .has-dropdown > a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', function(event) {
-            // Check if we are in mobile view
-            if (window.innerWidth <= 1024) {
-                event.preventDefault(); // Prevent link from navigating
-                const parentItem = this.parentElement;
-                parentItem.classList.toggle('active');
-            }
-        });
-    });
+    // --- Global Cart Counter Update ---
+    function updateCartCounter() {
+        const cartCounterEl = document.getElementById('cart-counter');
+        if (!cartCounterEl) return;
 
-     // --- Global Cart Counter Update Functionality ---
-     const cartCounterEl = document.getElementById('cart-counter');
-
-     function updateCartCounter() {
-         // We need to access getCart() from cart.js. For simplicity, we'll redefine it here.
-         // A better approach in larger apps would be modules, but this is clear and effective.
-         const cart = JSON.parse(localStorage.getItem('cart')) || [];
-         
-         let totalItems = 0;
-         cart.forEach(item => {
-             totalItems += item.quantity;
-         });
-         
-         if (cartCounterEl) {
-             cartCounterEl.textContent = totalItems;
-         }
-     }
- 
-     // Update the counter when the page loads
-     updateCartCounter();
- 
-     // Add an event listener to update the counter whenever the cart changes
-     window.addEventListener('cartUpdated', updateCartCounter);
-
-     // --- Global Wishlist Counter Update Functionality ---
-    const wishlistCounterEl = document.getElementById('wishlist-counter');
-
-    function updateWishlistCounter() {
-        const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-        if (wishlistCounterEl) {
-            wishlistCounterEl.textContent = wishlist.length;
-        }
+        const cart = JSON.parse(localStorage.getItem('cart')) || [];
+        const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCounterEl.textContent = totalItems;
     }
 
-    // Update the counter when the page first loads
+    // --- Global Wishlist Counter Update ---
+    function updateWishlistCounter() {
+        const wishlistCounterEl = document.getElementById('wishlist-counter');
+        if (!wishlistCounterEl) return;
+
+        // **THE FIX IS HERE:** We now read from 'wishlist_v2' to match cart.js
+        const wishlist = JSON.parse(localStorage.getItem('wishlist_v2')) || [];
+        wishlistCounterEl.textContent = wishlist.length;
+    }
+
+    // --- Initial Counter Updates on Page Load ---
+    updateCartCounter();
     updateWishlistCounter();
 
-    // Listen for the custom event from cart.js
+    // --- Event Listeners to Update Counters ---
+    window.addEventListener('cartUpdated', updateCartCounter);
     window.addEventListener('wishlistUpdated', updateWishlistCounter);
+
 });

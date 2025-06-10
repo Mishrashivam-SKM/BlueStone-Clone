@@ -23,19 +23,19 @@ function getCart() {
  */
 function saveCart(cart) {
     localStorage.setItem('cart', JSON.stringify(cart));
-    window.dispatchEvent(new Event('cartUpdated')); // Notifies the header counter to update
+    // Notifies the header counter to update
+    window.dispatchEvent(new CustomEvent('cartUpdated'));
 }
 
 /**
- * Adds an item with potential customizations to the shopping cart.
- * This is the function called from the Product Detail Page.
+ * Adds an item with customizations to the shopping cart.
  * @param {object} itemToAdd - The full item object to be added.
  */
 function addToCart(itemToAdd) {
     const cart = getCart();
     
     // Create a unique ID for this cart item based on its exact customizations.
-    // Example: "BS001R-Gold-18K-Diamond (SI IJ)"
+    // Example: "BS001R-Gold-18K-Diamond(SI IJ)"
     const cartItemId = `${itemToAdd.id}-${itemToAdd.customizations.metal}-${itemToAdd.customizations.purity}-${itemToAdd.customizations.stone}`;
     
     const existingItem = cart.find(cartItem => cartItem.cartItemId === cartItemId);
@@ -58,7 +58,6 @@ function addToCart(itemToAdd) {
  */
 function removeFromCart(cartItemId) {
     let cart = getCart();
-    // This keeps all items EXCEPT the one with the matching cartItemId.
     cart = cart.filter(item => item.cartItemId !== cartItemId);
     saveCart(cart);
 }
@@ -84,23 +83,61 @@ function updateCartQuantity(cartItemId, newQuantity) {
 }
 
 
-// --- WISHLIST FUNCTIONS ---
+// --- NEW & IMPROVED WISHLIST FUNCTIONS ---
 
+/**
+ * Retrieves the wishlist array of objects from localStorage.
+ * @returns {Array} The wishlist items. Returns an empty array if nothing is found.
+ */
 function getWishlist() {
-    return JSON.parse(localStorage.getItem('wishlist')) || [];
-}
-
-function saveWishlist(wishlist) {
-    localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    window.dispatchEvent(new Event('wishlistUpdated'));
-}
-
-function toggleWishlist(productId) {
-    let wishlist = getWishlist();
-    if (wishlist.includes(productId)) {
-        wishlist = wishlist.filter(id => id !== productId);
-    } else {
-        wishlist.push(productId);
+    try {
+        const wishlistString = localStorage.getItem('wishlist_v2'); // Using a new key to avoid conflicts with old format
+        return JSON.parse(wishlistString) || [];
+    } catch (error) {
+        console.error("Error parsing wishlist from localStorage:", error);
+        return [];
     }
+}
+
+/**
+ * Saves the wishlist array to localStorage and dispatches a custom event.
+ * @param {Array} wishlist - The wishlist array to save.
+ */
+function saveWishlist(wishlist) {
+    localStorage.setItem('wishlist_v2', JSON.stringify(wishlist));
+    // Notifies the header counter to update
+    window.dispatchEvent(new CustomEvent('wishlistUpdated'));
+}
+
+/**
+ * Toggles a custom item in the wishlist. Adds it if it doesn't exist, removes it if it does.
+ * @param {object} itemToToggle - The full item object with customizations.
+ */
+function toggleWishlistItem(itemToToggle) {
+    let wishlist = getWishlist();
+    // Create a unique ID for the item, just like we do for the cart.
+    const wishlistItemId = `${itemToToggle.id}-${itemToToggle.customizations.metal}-${itemToToggle.customizations.purity}-${itemToToggle.customizations.stone}`;
+    
+    const itemIndex = wishlist.findIndex(item => item.wishlistItemId === wishlistItemId);
+
+    if (itemIndex > -1) {
+        // Item exists, so remove it.
+        wishlist.splice(itemIndex, 1);
+    } else {
+        // Item does not exist, so add it.
+        itemToToggle.wishlistItemId = wishlistItemId;
+        wishlist.push(itemToToggle);
+    }
+    
     saveWishlist(wishlist);
+}
+
+/**
+ * Checks if a specific customized item exists in the wishlist.
+ * @param {string} wishlistItemId - The unique ID of the item to check for.
+ * @returns {boolean} - True if the item is in the wishlist, false otherwise.
+ */
+function isItemInWishlist(wishlistItemId) {
+    const wishlist = getWishlist();
+    return wishlist.some(item => item.wishlistItemId === wishlistItemId);
 }

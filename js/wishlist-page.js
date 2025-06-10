@@ -1,26 +1,22 @@
 // File: /js/wishlist-page.js
 
-document.addEventListener('DOMContentLoaded', () => {
-    console.log("wishlist-page.js script started."); // 1. Check if the script runs
-
+document.addEventListener('DOMContentLoaded', async () => {
     const wishlistGrid = document.getElementById('wishlist-grid');
     const emptyMessage = document.getElementById('empty-wishlist-message');
 
-    // 2. Check if the essential HTML elements exist
     if (!wishlistGrid || !emptyMessage) {
-        console.error("CRITICAL ERROR: Could not find 'wishlist-grid' or 'empty-wishlist-message' elements in the HTML.");
-        return; // Stop the script if the page is broken
+        console.error("Critical Error: Could not find 'wishlist-grid' or 'empty-wishlist-message' elements.");
+        return;
     }
     
     const formatCurrency = (amount) => `₹${amount.toLocaleString('en-IN')}`;
 
     async function renderWishlist() {
         try {
-            const wishlist = getWishlist(); // From cart.js
-            console.log("Wishlist IDs from localStorage:", wishlist); // 3. Check what's in the wishlist
+            // 1. Get the new wishlist (array of objects)
+            const wishlistItems = getWishlist(); // from cart.js
 
-            if (wishlist.length === 0) {
-                console.log("Wishlist is empty. Showing empty message.");
+            if (wishlistItems.length === 0) {
                 wishlistGrid.style.display = 'none';
                 emptyMessage.style.display = 'block';
                 return;
@@ -29,58 +25,75 @@ document.addEventListener('DOMContentLoaded', () => {
             wishlistGrid.style.display = 'grid';
             emptyMessage.style.display = 'none';
             
-            console.log("Fetching product data from data/products.json");
+            // 2. Fetch all base product data
             const productsResponse = await fetch('data/products.json');
-            if (!productsResponse.ok) {
-                throw new Error(`Failed to fetch products.json. Status: ${productsResponse.status}`);
-            }
+            if (!productsResponse.ok) throw new Error('Failed to fetch products.json.');
             const allProducts = await productsResponse.json();
-            console.log("Successfully fetched all products:", allProducts); // 4. Check if products were fetched
 
             wishlistGrid.innerHTML = '';
 
-            const wishlistedProducts = allProducts.filter(product => wishlist.includes(product.id));
-            console.log("Filtered products to display:", wishlistedProducts); // 5. Check the final list
+            // 3. Loop through each item IN THE WISHLIST
+            wishlistItems.forEach(item => {
+                // Find the matching base product
+                const product = allProducts.find(p => p.id === item.id);
+                if (!product) return; // Skip if product not found
 
-            if (wishlistedProducts.length === 0) {
-                 console.warn("Wishlist has IDs, but no matching products were found in products.json.");
-                 wishlistGrid.style.display = 'none';
-                 emptyMessage.style.display = 'block';
-                 return;
-            }
+                // 4. Generate the HTML for customization details
+                const customDetailsHtml = `
+                    <ul class="cart-custom-details">
+                        <li>Metal: <span>${item.customizations.metal}</span></li>
+                        <li>Purity: <span>${item.customizations.purity}</span></li>
+                        <li>Stone: <span>${item.customizations.stone}</span></li>
+                    </ul>`;
 
-            wishlistedProducts.forEach(product => {
-                const productCardHTML = `
-                    <a href="product-detail.html?id=${product.id}" class="product-card">
-                        <div class="wishlist-icon active" data-product-id="${product.id}">
-                            <i class="fa-solid fa-heart"></i>
-                        </div>
+                // 5. Build the full product card, now including the custom details
+                const productCard = document.createElement('div');
+                productCard.classList.add('product-card'); // Use a div wrapper for better event handling
+                
+                // Construct the link that preserves the customization in the URL
+                const detailUrl = `product-detail.html?id=${product.id}&metal=${item.customizations.metal}&purity=${item.customizations.purity}&stone=${encodeURIComponent(item.customizations.stone)}`;
+
+                productCard.innerHTML = `
+                    <div class="wishlist-icon active" data-wishlist-item-id="${item.wishlistItemId}">
+                        <i class="fa-solid fa-heart"></i>
+                    </div>
+                    <a href="${detailUrl}" class="product-link-wrapper">
                         <div class="product-image-container">
                             <img src="${product.images[0]}" alt="${product.name}">
                         </div>
                         <div class="product-card-details">
                             <h3>${product.name}</h3>
-                            <p class="price">${formatCurrency(product.price)}</p>
+                            <p class="price">${formatCurrency(item.finalPrice)}</p>
+                            <!-- Inject the custom details here! -->
+                            ${customDetailsHtml}
                         </div>
                     </a>
                 `;
-                wishlistGrid.innerHTML += productCardHTML;
+                wishlistGrid.appendChild(productCard);
             });
 
         } catch (error) {
             console.error("An error occurred in renderWishlist:", error);
-            wishlistGrid.innerHTML = `<p style="text-align: center; color: red;">Error: Could not load wishlist items. Check console for details.</p>`;
+            wishlistGrid.innerHTML = `<p style="text-align: center; color: red;">Error: Could not load wishlist items.</p>`;
         }
     }
 
+    // New event listener that uses the unique wishlistItemId
     wishlistGrid.addEventListener('click', (event) => {
         const wishlistBtn = event.target.closest('.wishlist-icon');
         if (wishlistBtn) {
             event.preventDefault();
             event.stopPropagation();
-            const productId = wishlistBtn.dataset.productId;
-            toggleWishlist(productId);
-            renderWishlist(); // Re-render the page to show the item has been removed
+            const wishlistItemIdToRemove = wishlistBtn.dataset.wishlistItemId;
+            
+            // We need to find the full item object to remove it
+            const wishlist = getWishlist();
+            const itemToRemove = wishlist.find(i => i.wishlistItemId === wishlistItemIdToRemove);
+
+            if (itemToRemove) {
+                toggleWishlistItem(itemToRemove); // Use the existing toggle function
+                renderWishlist(); // Re-render the page
+            }
         }
     });
 

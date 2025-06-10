@@ -1,20 +1,14 @@
 // File: /js/pdp.js
 document.addEventListener('DOMContentLoaded', function() {
-    // --- 1. GET PRODUCT ID & CUSTOMIZATIONS FROM URL ---
     const urlParams = new URLSearchParams(window.location.search);
     const productId = urlParams.get('id');
 
-    // FIXED: Get customization params from the URL, if they exist.
-    const urlMetal = urlParams.get('metal');
-    const urlPurity = urlParams.get('purity');
-    const urlStone = urlParams.get('stone');
-
     if (!productId) {
-        window.location.href = 'index.html';
+        window.location.href = 'index.html'; // Go home if no product ID
         return;
     }
 
-    // --- 2. GET ALL DOM ELEMENTS ---
+    // --- GET ALL DOM ELEMENTS ---
     const productNameEl = document.getElementById('product-name');
     const productIdEl = document.getElementById('product-id');
     const productDescEl = document.getElementById('product-description');
@@ -30,19 +24,46 @@ document.addEventListener('DOMContentLoaded', function() {
     let basePrice = 0;
     let marketPrices = {};
 
-    // --- 3. DYNAMIC PRICING ENGINE ---
-    function calculateAndDisplayPrice() {
-        if (!basePrice || !marketPrices.metals) return;
+    // --- HELPER FUNCTION to get current selections ---
+    function getCurrentCustomizations() {
+        return {
+            metal: metalSelect.value,
+            purity: puritySelect.value,
+            stone: stoneSelect.value,
+        };
+    }
 
-        const metalMultiplier = marketPrices.metals[metalSelect.value] || 1;
-        const purityMultiplier = marketPrices.purity[puritySelect.value] || 1;
-        const stoneMultiplier = marketPrices.stones[stoneSelect.value] || 1;
+    // --- DYNAMIC PRICING ENGINE ---
+    function calculateAndDisplayPrice() {
+        if (!basePrice || !Object.keys(marketPrices).length) return;
+
+        const customizations = getCurrentCustomizations();
+        const metalMultiplier = marketPrices.metals[customizations.metal] || 1;
+        const purityMultiplier = marketPrices.purity[customizations.purity] || 1;
+        const stoneMultiplier = marketPrices.stones[customizations.stone] || 1;
         const finalPrice = basePrice * metalMultiplier * purityMultiplier * stoneMultiplier;
         
         priceEl.textContent = `₹${Math.round(finalPrice).toLocaleString('en-IN')}`;
+        
+        // When price changes, we also need to update the wishlist button state
+        updateWishlistButtonState();
+    }
+    
+    // --- UPDATE WISHLIST BUTTON'S APPEARANCE ---
+    function updateWishlistButtonState() {
+        const customizations = getCurrentCustomizations();
+        const wishlistItemId = `${productId}-${customizations.metal}-${customizations.purity}-${customizations.stone}`;
+
+        if (isItemInWishlist(wishlistItemId)) {
+            wishlistBtn.classList.add('active');
+            wishlistBtn.innerHTML = '<i class="fa-solid fa-heart"></i> In Wishlist';
+        } else {
+            wishlistBtn.classList.remove('active');
+            wishlistBtn.innerHTML = '<i class="fa-regular fa-heart"></i> Add to Wishlist';
+        }
     }
 
-    // --- 4. FETCH DATA AND POPULATE PAGE ---
+    // --- FETCH DATA AND POPULATE PAGE ---
     async function loadProductDetails() {
         try {
             const [productsResponse, pricesResponse] = await Promise.all([
@@ -61,88 +82,69 @@ document.addEventListener('DOMContentLoaded', function() {
             
             basePrice = product.price;
 
-            // --- 5. POPULATE STATIC & DYNAMIC CONTENT ---
+            // --- POPULATE PAGE CONTENT ---
             document.title = `${product.name} - BlueStone Clone`;
             productNameEl.textContent = product.name;
             productIdEl.textContent = `SKU: ${product.id}`;
             productDescEl.textContent = product.description;
 
-            // Populate gallery
             mainImageEl.src = product.images[0];
-            thumbnailContainerEl.innerHTML = '';
-            product.images.forEach((imgSrc, index) => {
-                const thumb = document.createElement('img');
-                thumb.src = imgSrc;
-                thumb.alt = `Thumbnail ${index + 1}`;
-                if (index === 0) thumb.classList.add('active');
-                thumb.addEventListener('click', () => {
-                    mainImageEl.src = imgSrc;
-                    document.querySelectorAll('.thumbnail-container img').forEach(t => t.classList.remove('active'));
-                    thumb.classList.add('active');
-                });
-                thumbnailContainerEl.appendChild(thumb);
-            });
+            thumbnailContainerEl.innerHTML = product.images.map((imgSrc, index) => `
+                <img src="${imgSrc}" alt="Thumbnail ${index + 1}" class="${index === 0 ? 'active' : ''}">
+            `).join('');
 
-            // FIXED: Set initial dropdown values. Prioritize URL params, then fall back to defaults.
-            metalSelect.value = urlMetal || product.defaultSpecs.metal;
-            puritySelect.value = urlPurity || product.defaultSpecs.purity;
-            stoneSelect.value = urlStone || product.defaultSpecs.stone;
-
-            // Calculate the initial price based on the selected (or default) options
-            calculateAndDisplayPrice();
+            // Set initial dropdown values from product defaults
+            metalSelect.value = product.defaultSpecs.metal;
+            puritySelect.value = product.defaultSpecs.purity;
+            stoneSelect.value = product.defaultSpecs.stone;
             
-            // Update wishlist button state
-            updateWishlistButtonState(productId);
+            // Initial price calculation and wishlist button state
+            calculateAndDisplayPrice();
 
         } catch (error) {
             console.error('Error loading product details:', error);
         }
     }
 
-    // --- 6. EVENT LISTENERS ---
-    metalSelect.addEventListener('change', calculateAndDisplayPrice);
-    puritySelect.addEventListener('change', calculateAndDisplayPrice);
-    stoneSelect.addEventListener('change', calculateAndDisplayPrice);
-
-   // ... (keep all the code at the top of the file) ...
-
-   addToCartBtn.addEventListener('click', () => {
-    // Create the full object with all the details
-    const itemForCart = {
-        id: productId,
-        quantity: 1, // Always add one at a time from PDP
-        customizations: {
-            metal: metalSelect.value,
-            purity: puritySelect.value,
-            stone: stoneSelect.value
-        },
-        // Get the FINAL calculated price from the display
-        finalPrice: parseFloat(priceEl.textContent.replace(/[^0-9.]/g, ''))
-    };
-
-    addToCart(itemForCart); // Call the upgraded global function from cart.js
+    // --- EVENT LISTENERS ---
     
-    // Give user feedback
-    addToCartBtn.textContent = 'Added!';
-    setTimeout(() => { addToCartBtn.textContent = 'Add to Cart'; }, 2000);
-});
+    // Recalculate price and update button state when any option changes
+    [metalSelect, puritySelect, stoneSelect].forEach(el => el.addEventListener('change', calculateAndDisplayPrice));
 
-// ... (keep all the code at the bottom of the file) ...
-
-    function updateWishlistButtonState(productId) {
-        if (isProductInWishlist(productId)) {
-            wishlistBtn.classList.add('active');
-            wishlistBtn.innerHTML = '<i class="fa-solid fa-heart"></i> In Wishlist';
-        } else {
-            wishlistBtn.classList.remove('active');
-            wishlistBtn.innerHTML = '<i class="fa-regular fa-heart"></i> Add to Wishlist';
+    // Handle thumbnail clicks
+    thumbnailContainerEl.addEventListener('click', e => {
+        if (e.target.tagName === 'IMG') {
+            mainImageEl.src = e.target.src;
+            document.querySelectorAll('.thumbnail-container img').forEach(t => t.classList.remove('active'));
+            e.target.classList.add('active');
         }
-    }
-
-    wishlistBtn.addEventListener('click', () => {
-        toggleWishlist(productId);
-        updateWishlistButtonState(productId);
     });
 
+    // Handle Add to Cart click
+    addToCartBtn.addEventListener('click', () => {
+        const itemForCart = {
+            id: productId,
+            quantity: 1,
+            customizations: getCurrentCustomizations(),
+            finalPrice: parseFloat(priceEl.textContent.replace(/[^0-9.]/g, ''))
+        };
+        addToCart(itemForCart); // from cart.js
+        addToCartBtn.textContent = 'Added!';
+        setTimeout(() => { addToCartBtn.textContent = 'Add to Cart'; }, 2000);
+    });
+    
+    // Handle Add to Wishlist click
+    wishlistBtn.addEventListener('click', () => {
+        const itemForWishlist = {
+            id: productId,
+            customizations: getCurrentCustomizations(),
+            // price is not strictly needed in the wishlist object, but can be useful
+            finalPrice: parseFloat(priceEl.textContent.replace(/[^0-9.]/g, ''))
+        };
+        toggleWishlistItem(itemForWishlist); // our new function from cart.js
+        updateWishlistButtonState(); // update the button's look immediately
+    });
+
+    // --- INITIAL CALL ---
     loadProductDetails();
 });
