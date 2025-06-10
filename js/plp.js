@@ -1,3 +1,4 @@
+// File: /js/plp.js
 document.addEventListener('DOMContentLoaded', function () {
     // DOM Elements
     const productGrid = document.querySelector('.product-grid');
@@ -6,17 +7,16 @@ document.addEventListener('DOMContentLoaded', function () {
     const sortBySelect = document.querySelector('#sort-by');
 
     // State Variable
-    let allProducts = []; // This will store the master list of products
+    let allProducts = []; // This will store the master list of all products
+    
+    const formatCurrency = (amount) => `₹${amount.toLocaleString('en-IN')}`;
 
     // --- 1. FETCHING LOGIC ---
-
     async function fetchProducts() {
         try {
             const response = await fetch('data/products.json');
             if (!response.ok) throw new Error('Network response was not ok');
-            const products = await response.json();
-
-            allProducts = products; // Store the original list
+            allProducts = await response.json();
             applyFiltersAndSort(); // Initial display
         } catch (error) {
             console.error('Fetch error:', error);
@@ -25,115 +25,106 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // --- 2. DISPLAY LOGIC ---
-
-    function displayProducts(products) {
-        productGrid.innerHTML = ''; // Clear the grid before displaying new results
+    function displayProducts(productsToDisplay) {
+        productGrid.innerHTML = ''; // Clear the grid
 
         if (pageTitle) {
-            pageTitle.textContent = `Rings (${products.length} Designs)`;
+            pageTitle.textContent = `Jewellery (${productsToDisplay.length} Designs)`;
         }
 
-        if (products.length === 0) {
+        if (productsToDisplay.length === 0) {
             productGrid.innerHTML = '<p>No products match your criteria.</p>';
             return;
         }
 
-        products.forEach(product => {
-            const productLink = document.createElement('a');
-            productLink.href = `product-detail.html?id=${product.id}`;
-            productLink.classList.add('product-card');
+        productsToDisplay.forEach(product => {
+            // **THE FIX, PART 1: Check the wishlist using the item's default specs.**
+            // Create the unique ID for the default version of the product.
+            const defaultWishlistItemId = `${product.id}-${product.defaultSpecs.metal}-${product.defaultSpecs.purity}-${product.defaultSpecs.stone}`;
+            
+            // Check if this default version is in the wishlist.
+            const isActive = isItemInWishlist(defaultWishlistItemId);
 
-            // **FIX 1: CORRECTED TYPO** (was 'pproductLink')
-            productLink.innerHTML = `
-                <div class="wishlist-icon" data-product-id="${product.id}">
-                    <i class="fa-regular fa-heart"></i>
-                </div>
-                <div class="product-image-container">
-                    <img src="${product.images[0]}" alt="${product.name}">
-                </div>
-                <div class="product-card-details">
-                    <h3>${product.name}</h3>
-                    <p class="price">₹${product.price.toLocaleString('en-IN')}</p>
+            const productCardHTML = `
+                <a href="product-detail.html?id=${product.id}" class="product-link-wrapper">
+                    <div class="product-image-container">
+                        <img src="${product.images[0]}" alt="${product.name}">
+                    </div>
+                    <div class="product-card-details">
+                        <h3>${product.name}</h3>
+                        <p class="price">${formatCurrency(product.price)}</p>
+                    </div>
+                </a>
+                <!-- The icon is now outside the link to prevent navigation on click -->
+                <div class="wishlist-icon ${isActive ? 'active' : ''}" data-product-id="${product.id}">
+                    <i class="fa-${isActive ? 'solid' : 'regular'} fa-heart"></i>
                 </div>
             `;
-
-            // Add the active class if the product is in the wishlist
-            const wishlistIcon = productLink.querySelector('.wishlist-icon');
-            if (wishlistIcon && typeof isProductInWishlist === 'function' && isProductInWishlist(product.id)) {
-                wishlistIcon.classList.add('active');
-                wishlistIcon.querySelector('i').classList.replace('fa-regular', 'fa-solid');
-            }
             
-            // **FIX 2: CRITICAL MISSING LINE**
-            // This adds the card you just created to the actual webpage.
-            productGrid.appendChild(productLink);
+            const productCard = document.createElement('div');
+            productCard.classList.add('product-card');
+            productCard.innerHTML = productCardHTML;
+            productGrid.appendChild(productCard);
         });
     }
 
     // --- 3. FILTERING AND SORTING LOGIC ---
-
     function applyFiltersAndSort() {
-        let filteredProducts = [...allProducts]; // Start with a fresh copy of all products
+        let filteredProducts = [...allProducts]; 
 
-        // Filtering Step
-        const activeFilters = {
-            price: [],
-            metal: []
-        };
-        filterCheckboxes.forEach(checkbox => {
-            if (checkbox.checked) {
-                activeFilters[checkbox.name].push(checkbox.value);
-            }
+        // Filtering logic (remains the same)
+        const activeFilters = { price: [], metal: [] };
+        filterCheckboxes.forEach(cb => {
+            if (cb.checked) activeFilters[cb.name].push(cb.value);
         });
-
         if (activeFilters.price.length > 0) {
-            filteredProducts = filteredProducts.filter(product => {
-                return activeFilters.price.some(range => {
-                    const [min, max] = range.split('-').map(Number);
-                    return product.price >= min && product.price <= max;
-                });
-            });
+            filteredProducts = filteredProducts.filter(p => activeFilters.price.some(range => {
+                const [min, max] = range.split('-').map(Number);
+                return p.price >= min && p.price <= (max || Infinity);
+            }));
         }
-
         if (activeFilters.metal.length > 0) {
-            filteredProducts = filteredProducts.filter(product =>
-                activeFilters.metal.includes(product.defaultSpecs.metal)
-            );
+            filteredProducts = filteredProducts.filter(p => activeFilters.metal.includes(p.defaultSpecs.metal));
         }
 
-        // Sorting Step
+        // Sorting logic (remains the same)
         const sortBy = sortBySelect.value;
-        if (sortBy === 'price-asc') {
-            filteredProducts.sort((a, b) => a.price - b.price);
-        } else if (sortBy === 'price-desc') {
-            filteredProducts.sort((a, b) => b.price - a.price);
-        }
+        if (sortBy === 'price-asc') filteredProducts.sort((a, b) => a.price - b.price);
+        else if (sortBy === 'price-desc') filteredProducts.sort((a, b) => b.price - a.price);
 
-        // Final Step: Re-render the display
         displayProducts(filteredProducts);
     }
 
     // --- 4. EVENT LISTENERS ---
-
-    filterCheckboxes.forEach(checkbox => {
-        checkbox.addEventListener('change', applyFiltersAndSort);
-    });
-
+    filterCheckboxes.forEach(cb => cb.addEventListener('change', applyFiltersAndSort));
     sortBySelect.addEventListener('change', applyFiltersAndSort);
 
-    // Using Event Delegation for wishlist icons for better performance
+    // Event Delegation for wishlist icons
     productGrid.addEventListener('click', (event) => {
         const wishlistBtn = event.target.closest('.wishlist-icon');
         if (wishlistBtn) {
-            event.preventDefault(); // Stop link navigation
-            event.stopPropagation(); // Stop event from bubbling up
-
+            event.preventDefault(); // Stop any other default action
+            
+            // **THE FIX, PART 2: Send the full object with default specs.**
             const productId = wishlistBtn.dataset.productId;
-            if (typeof toggleWishlist === 'function') {
-                toggleWishlist(productId);
+            const product = allProducts.find(p => p.id === productId);
+
+            if (!product) {
+                console.error("Could not find product data for ID:", productId);
+                return;
             }
 
-            // Toggle visual state
+            // Create the object that our new wishlist function needs
+            const itemToToggle = {
+                id: product.id,
+                customizations: product.defaultSpecs, // Use the product's default specs
+                finalPrice: product.price // Use the product's base price
+            };
+            
+            // Call the correct, updated function from cart.js
+            toggleWishlistItem(itemToToggle);
+
+            // Toggle visual state of the icon immediately
             wishlistBtn.classList.toggle('active');
             const icon = wishlistBtn.querySelector('i');
             if (wishlistBtn.classList.contains('active')) {
